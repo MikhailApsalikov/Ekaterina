@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularApp\app.js" />
+    <Content Include="Content\main.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\DisciplineList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

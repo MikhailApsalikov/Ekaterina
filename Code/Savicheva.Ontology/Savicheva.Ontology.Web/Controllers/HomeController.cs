@@ -13,5 +13,10 @@ namespace Savicheva.Ontology.Web.Controllers
         {
             return View();
         }
+
+	    public ViewResult DisciplineList()
+	    {
+		    return View();
+	    }
     }
 }

@@ -4,12 +4,20 @@
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
+	<link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+	<link href="~/Content/main.css" rel="stylesheet" />
 	@RenderSection("css", true)
 </head>
-<body>
+<body ng-app="APP">
+<header class="navbar navbar-default">
+	123
+</header>
 	<div>
 		@RenderBody()
 	</div>
+	<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="~/node_modules/angular/angular.js"></script>
 	<script src="~/AngularApp/app.js"></script>
 	@RenderSection("scripts", true)
