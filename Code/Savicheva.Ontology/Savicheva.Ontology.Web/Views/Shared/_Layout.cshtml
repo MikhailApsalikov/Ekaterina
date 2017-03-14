@@ -11,7 +11,47 @@
 </head>
 <body ng-app="APP">
 <header class="navbar navbar-default">
-	123
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">@ViewBag.Title</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/">На главную</a>
+				</li>
+				<li>
+					<a href="/DisciplineList">Дисциплины</a>
+				</li>
+				<li>
+					<a href="/Departments">Кафедры и направления подготовки</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				@if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
+				{
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User.Identity.Name<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/Logout">Выйти</a></li>
+						</ul>
+					</li>
+				}
+				else
+				{
+					<li><a href="/Login">Войти в систему</a></li>
+					
+				}
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div>
 </header>
 	<div>
 		@RenderBody()
