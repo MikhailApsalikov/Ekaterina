@@ -5,6 +5,18 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Web", "Savicheva.Ontology.Web\Savicheva.Ontology.Web.csproj", "{F1C75622-C114-4225-ADEF-1EE0B5B888CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Entities", "Savicheva.Ontology.Entities\Savicheva.Ontology.Entities.csproj", "{19EBDC2E-8946-4239-82DD-D2ED884641C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Interfaces", "Savicheva.Ontology.Interfaces\Savicheva.Ontology.Interfaces.csproj", "{45FF7DED-DA3E-4C54-8218-080708A75A95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Models", "Savicheva.Ontology.Models\Savicheva.Ontology.Models.csproj", "{14C067E7-5CCD-4F28-B846-CA8C408ED081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Repositories", "Savicheva.Ontology.Repositories\Savicheva.Ontology.Repositories.csproj", "{0E88F680-91AD-4DFD-945D-3368587F050E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.Validators", "Savicheva.Ontology.Validators\Savicheva.Ontology.Validators.csproj", "{985378C8-9BE2-46DA-A373-24334370C647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savicheva.Ontology.SemanticRepositories", "Savicheva.Ontology.SemanticRepositories\Savicheva.Ontology.SemanticRepositories.csproj", "{C9441FF3-BECB-4EA3-9E2D-936205C9D09B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{F1C75622-C114-4225-ADEF-1EE0B5B888CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C75622-C114-4225-ADEF-1EE0B5B888CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1C75622-C114-4225-ADEF-1EE0B5B888CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19EBDC2E-8946-4239-82DD-D2ED884641C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19EBDC2E-8946-4239-82DD-D2ED884641C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19EBDC2E-8946-4239-82DD-D2ED884641C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19EBDC2E-8946-4239-82DD-D2ED884641C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FF7DED-DA3E-4C54-8218-080708A75A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FF7DED-DA3E-4C54-8218-080708A75A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FF7DED-DA3E-4C54-8218-080708A75A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FF7DED-DA3E-4C54-8218-080708A75A95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C067E7-5CCD-4F28-B846-CA8C408ED081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C067E7-5CCD-4F28-B846-CA8C408ED081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C067E7-5CCD-4F28-B846-CA8C408ED081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C067E7-5CCD-4F28-B846-CA8C408ED081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E88F680-91AD-4DFD-945D-3368587F050E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E88F680-91AD-4DFD-945D-3368587F050E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E88F680-91AD-4DFD-945D-3368587F050E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E88F680-91AD-4DFD-945D-3368587F050E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{985378C8-9BE2-46DA-A373-24334370C647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985378C8-9BE2-46DA-A373-24334370C647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985378C8-9BE2-46DA-A373-24334370C647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985378C8-9BE2-46DA-A373-24334370C647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9441FF3-BECB-4EA3-9E2D-936205C9D09B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9441FF3-BECB-4EA3-9E2D-936205C9D09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9441FF3-BECB-4EA3-9E2D-936205C9D09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9441FF3-BECB-4EA3-9E2D-936205C9D09B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

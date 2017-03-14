@@ -164,6 +164,28 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Savicheva.Ontology.Entities\Savicheva.Ontology.Entities.csproj">
+      <Project>{19ebdc2e-8946-4239-82dd-d2ed884641c9}</Project>
+      <Name>Savicheva.Ontology.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Savicheva.Ontology.Interfaces\Savicheva.Ontology.Interfaces.csproj">
+      <Project>{45ff7ded-da3e-4c54-8218-080708a75a95}</Project>
+      <Name>Savicheva.Ontology.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Savicheva.Ontology.Models\Savicheva.Ontology.Models.csproj">
+      <Project>{14c067e7-5ccd-4f28-b846-ca8c408ed081}</Project>
+      <Name>Savicheva.Ontology.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Savicheva.Ontology.Repositories\Savicheva.Ontology.Repositories.csproj">
+      <Project>{0e88f680-91ad-4dfd-945d-3368587f050e}</Project>
+      <Name>Savicheva.Ontology.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Savicheva.Ontology.SemanticRepositories\Savicheva.Ontology.SemanticRepositories.csproj">
+      <Project>{c9441ff3-becb-4ea3-9e2d-936205c9d09b}</Project>
+      <Name>Savicheva.Ontology.SemanticRepositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
