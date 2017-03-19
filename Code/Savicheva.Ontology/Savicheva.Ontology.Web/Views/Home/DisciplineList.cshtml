@@ -4,7 +4,7 @@
 }
 
 @section css{
-
+<link href="~/Content/subjectList.css" rel="stylesheet" />
 }
 
 @section scripts{
@@ -54,7 +54,9 @@
 				<th ng-bind="subject.HasHourForKoll"></th>
 				<th ng-bind="subject.HasHourForInd"></th>
 				<th ng-bind="formatFormsOfControl(subject.FormsOfControl)"></th>
-				<th>
+				<th class="actions">
+					<button class="btn btn-default">Редактировать</button>
+					<button class="btn btn-danger" ng-click="remove(subject.Id)">Удалить</button>
 				</th>
 			</tr>
 		</tbody>

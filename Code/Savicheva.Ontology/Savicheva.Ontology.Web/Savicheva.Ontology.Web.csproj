@@ -183,6 +183,7 @@
     <Content Include="AngularApp\Controllers\subjectListController.js" />
     <Content Include="AngularApp\Services\baseService.js" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\subjectList.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

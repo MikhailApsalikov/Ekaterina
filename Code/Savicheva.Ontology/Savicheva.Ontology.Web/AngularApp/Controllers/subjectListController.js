@@ -19,9 +19,15 @@
 			angular.forEach(focs, function(foc) {
 				focNames.push(foc.Title);
 			});
-			
+
 			return focNames.join(", ");
-		}
+		};
+
+		$scope.remove = function(id) {
+			service.remove("subject", id).then(function () {
+				$scope.reload();
+			});
+		};
 
 		function activate() {
 			$scope.reload();
