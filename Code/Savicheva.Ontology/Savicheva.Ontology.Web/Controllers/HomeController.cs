@@ -4,23 +4,17 @@
 
 	public class HomeController : Controller
 	{
-		// GET: Home
-		public ActionResult Index()
+		public ViewResult SubjectList()
 		{
 			return View();
 		}
 
-		public ViewResult DisciplineList()
+		public ViewResult SubjectView()
 		{
 			return View();
 		}
 
-		public ViewResult DisciplineView()
-		{
-			return View();
-		}
-
-		public ViewResult DisciplineEdit()
+		public ViewResult SubjectEdit()
 		{
 			return View();
 		}

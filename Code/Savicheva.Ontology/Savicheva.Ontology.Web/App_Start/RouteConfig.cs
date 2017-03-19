@@ -9,7 +9,7 @@
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			routes.MapRoute("Default", "{action}/{id}", new {controller = "Home", action = "Index", id = UrlParameter.Optional}
+			routes.MapRoute("Default", "{action}/{id}", new {controller = "Home", action = "SubjectList", id = UrlParameter.Optional}
 				);
 		}
 	}
