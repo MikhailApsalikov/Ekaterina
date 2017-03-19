@@ -65,7 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="FormOfControl.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="Enums\AccountRole.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
