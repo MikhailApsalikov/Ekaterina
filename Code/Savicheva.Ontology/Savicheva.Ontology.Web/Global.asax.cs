@@ -15,6 +15,7 @@
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			AutoMapperConfig.RegisterMappings();
+			UnityConfig.Register(GlobalConfiguration.Configuration);
 		}
 	}
 }
