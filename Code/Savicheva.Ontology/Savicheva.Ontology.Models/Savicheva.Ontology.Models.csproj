@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubjectModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
