@@ -8,10 +8,55 @@
 }
 
 @section scripts{
-<script src="~/AngularApp/Controllers/subjectListController.js"></script>
+	<script src="~/AngularApp/Controllers/subjectListController.js"></script>
 }
 
 <div ng-controller="subjectListController">
-	<div></div>
-	Страница находится в разработке!
+	<h1>Список дисциплин</h1>
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+		<tr>
+			<th>
+				#
+			</th>
+			<th>
+				Название
+			</th>
+			<th>
+				Часы для проведения практических занятий
+			</th>
+			<th>
+				Часы для проведения лекций
+			</th>
+			<th>
+				Часы для проведения лабораторных работ
+			</th>
+			<th>
+				Часы для проведения коллоквиумов
+			</th>
+			<th>
+				Часы для индивидуальных занятий
+			</th>
+			<th>
+				Форма контроля
+			</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="subject in subjects track by $index">
+				<th ng-bind="subject.Id"></th>
+				<th ng-bind="subject.Title"></th>
+
+				<th ng-bind="subject.HasHourForPract"></th>
+				<th ng-bind="subject.HasHourForLecture"></th>
+				<th ng-bind="subject.HasHourForLab"></th>
+				<th ng-bind="subject.HasHourForKoll"></th>
+				<th ng-bind="subject.HasHourForInd"></th>
+				<th ng-bind="formatFormsOfControl(subject.FormsOfControl)"></th>
+				<th>
+				</th>
+			</tr>
+		</tbody>
+	</table>
 </div>

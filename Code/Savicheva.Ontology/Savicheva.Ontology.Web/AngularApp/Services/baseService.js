@@ -12,6 +12,8 @@
 					url: "api/" + controllerName,
 					method: "GET",
 					params: params
+				}).then(function (responce) {
+					return responce.data;
 				});
 			},
 			getById: function (controllerName, id) {
@@ -21,6 +23,8 @@
 					params: {
 						id: id
 					}
+				}).then(function(responce) {
+					return responce.data;
 				});
 			},
 			create: function (controllerName, entity) {
@@ -29,6 +33,8 @@
 					url: "api/" + controllerName,
 					method: "POST",
 					data: entity
+				}).then(function (responce) {
+					return responce.data;
 				});
 			},
 			update: function (controllerName, id, entity) {
@@ -40,6 +46,8 @@
 					params: {
 						id: id
 					}
+				}).then(function (responce) {
+					return responce.data;
 				});
 			},
 			remove: function(controllerName, id) {
