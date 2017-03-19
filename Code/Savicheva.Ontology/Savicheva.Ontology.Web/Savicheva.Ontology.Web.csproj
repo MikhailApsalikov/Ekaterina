@@ -180,6 +180,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularApp\app.js" />
+    <Content Include="AngularApp\Controllers\subjectListController.js" />
+    <Content Include="AngularApp\Services\baseService.js" />
     <Content Include="Content\main.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -219,8 +221,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AngularApp\Controllers\" />
-    <Folder Include="AngularApp\Services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
