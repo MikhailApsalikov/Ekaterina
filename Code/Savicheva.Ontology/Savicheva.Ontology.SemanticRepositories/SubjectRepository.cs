@@ -3,11 +3,12 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using System.Linq.Expressions;
 	using Entities;
-	using Interfaces;
 	using Selp.Common.Entities;
+	using Selp.Interfaces;
 
-	internal class SubjectRepository : ISemanticRepository<Subject, int>
+	public class SubjectRepository : ISelpRepository<Subject, int>
 	{
 		private readonly List<Subject> subjects = new List<Subject>
 		{
@@ -78,14 +79,24 @@
 			}
 		};
 
+		public List<Subject> GetAll()
+		{
+			return subjects;
+		}
+
 		public Subject GetById(int id)
 		{
-			return subjects.FirstOrDefault(i=>i.Id == id);
+			return subjects.FirstOrDefault(i => i.Id == id);
 		}
 
 		public void Remove(int id)
 		{
 			subjects.RemoveAt(id);
+		}
+
+		public List<Subject> GetByCustomExpression(Expression<Func<Subject, bool>> customExpression)
+		{
+			throw new NotSupportedException();
 		}
 
 		public RepositoryModifyResult<Subject> Create(Subject entity)
@@ -103,7 +114,7 @@
 
 		public RepositoryModifyResult<Subject> Update(int id, Subject entity)
 		{
-			var index = subjects.FindIndex(s => s.Id == id);
+			int index = subjects.FindIndex(s => s.Id == id);
 			subjects[index] = entity;
 			return new RepositoryModifyResult<Subject>(entity);
 		}
