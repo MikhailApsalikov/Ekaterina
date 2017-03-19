@@ -186,8 +186,9 @@
     <Content Include="AngularApp\app.js" />
     <Content Include="AngularApp\Controllers\subjectListController.js" />
     <Content Include="AngularApp\Services\baseService.js" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
-    <Content Include="Content\subjectList.css" />
+    <Content Include="Content\subject-list.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

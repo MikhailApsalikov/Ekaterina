@@ -4,11 +4,23 @@
 }
 
 @section css{
-
+<link href="~/Content/login.css" rel="stylesheet" />
 }
 
 @section scripts{
 
 }
 
-<h1>Страница находится в разработке!</h1>
+
+<form class="login-form">
+	<h1>Авторизация</h1>
+	<div class="form-group">
+		<label for="login">Имя пользователя</label>
+		<input type="text" class="form-control" id="login" placeholder="Имя пользователя">
+	</div>
+	<div class="form-group">
+		<label for="password">Пароль</label>
+		<input type="password" class="form-control" id="password" placeholder="Пароль">
+	</div>
+	<button type="submit" class="btn btn-default btn-login">Вход</button>
+</form>

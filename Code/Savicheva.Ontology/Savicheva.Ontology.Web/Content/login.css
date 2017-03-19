@@ -1,0 +1,14 @@
+﻿.login-form {
+	width: 500px;
+	margin: 300px auto;
+}
+
+h1 {
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.btn-login {
+	width: 150px;
+	float: right;
+}
