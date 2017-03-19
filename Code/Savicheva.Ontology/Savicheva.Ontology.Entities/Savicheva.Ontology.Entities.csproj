@@ -72,6 +72,7 @@
     <Compile Include="Enums\AccountRole.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubjectFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
