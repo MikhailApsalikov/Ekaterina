@@ -32,21 +32,14 @@
 						<a href="/Departments">Кафедры и направления подготовки</a>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					@if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
-					{
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User.Identity.Name<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/Logout">Выйти</a></li>
-							</ul>
-						</li>
-					}
-					else
-					{
-						<li><a href="/Login">Войти в систему</a></li>
-
-					}
+				<ul class="nav navbar-nav navbar-right" ng-controller="userOptionsController">
+					<li class="dropdown" ng-if="isLoggedIn()">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{userName}} ({{role}})<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" ng-click="logout()">Выйти</a></li>
+						</ul>
+					</li>
+					<li ng-if="!isLoggedIn()"><a href="/Login">Войти в систему</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
@@ -73,6 +66,8 @@
 			</div>
 		</script>
 	</div>
+	<script>
+	</script>
 	<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="~/node_modules/angular/angular.js"></script>
@@ -82,6 +77,8 @@
 	<script src="~/AngularApp/Services/baseService.js"></script>
 	<script src="~/AngularApp/Services/errorService.js"></script>
 	<script src="~/AngularApp/Controllers/errorController.js"></script>
+	<script src="~/AngularApp/Controllers/userOptionsController.js"></script>
+	<script src="~/AngularApp/Services/loginService.js"></script>
 	@RenderSection("scripts", true)
 </body>
 </html>

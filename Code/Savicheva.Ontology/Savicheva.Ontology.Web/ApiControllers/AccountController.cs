@@ -41,23 +41,25 @@
 			validator.Validate();
 			if (!validator.IsValid)
 			{
-				return Ok(new RepositoryModifyResult<bool?>(validator.Errors));
+				return Ok(new RepositoryModifyResult<AccountModel>(validator.Errors));
 			}
 
 			List<Account> result =
 				Repository.GetByCustomExpression(d => d.Name == model.Name);
 			if (result.Count == 1)
 			{
-				if (result[0].Password != model.Password)
+				AccountModel account = MapEntityToModel(result[0]);
+				if (account.Password != model.Password)
 				{
-					return Ok(new RepositoryModifyResult<bool?>(new List<ValidatorError>
+					return Ok(new RepositoryModifyResult<AccountModel>(new List<ValidatorError>
 					{
 						new ValidatorError("Неверный пароль")
 					}));
 				}
-				return Ok(new RepositoryModifyResult<bool?>(true));
+				account.Password = null;
+				return Ok(new RepositoryModifyResult<AccountModel>(account));
 			}
-			return Ok(new RepositoryModifyResult<bool?>(new List<ValidatorError>
+			return Ok(new RepositoryModifyResult<AccountModel>(new List<ValidatorError>
 			{
 				new ValidatorError("Такого пользователя не существует")
 			}));

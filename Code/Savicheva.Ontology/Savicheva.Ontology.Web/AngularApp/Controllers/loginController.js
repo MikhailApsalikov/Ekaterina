@@ -14,10 +14,6 @@
 			loginService.login({
 				Name: $scope.login,
 				Password: $scope.password
-			}).then(function(isSuccess) {
-				if (isSuccess) {
-					window.location = "/subjectList";
-				}
 			});
 		};
 

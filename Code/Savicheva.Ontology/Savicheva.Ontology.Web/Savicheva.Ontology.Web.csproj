@@ -187,6 +187,7 @@
     <Content Include="AngularApp\Controllers\errorController.js" />
     <Content Include="AngularApp\Controllers\loginController.js" />
     <Content Include="AngularApp\Controllers\subjectListController.js" />
+    <Content Include="AngularApp\Controllers\userOptionsController.js" />
     <Content Include="AngularApp\Services\baseService.js" />
     <Content Include="AngularApp\Services\errorService.js" />
     <Content Include="AngularApp\Services\loginService.js" />

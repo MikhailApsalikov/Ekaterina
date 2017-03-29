@@ -15,10 +15,28 @@
 				}).then(function (responce) {
 					if (!responce.data.IsValid) {
 						errorService.open(responce.data.Errors);
-						return false;
+						return;
 					}
-					return true;
+					window.localStorage.user = JSON.stringify(responce.data.ModifiedEntity);
+					window.location = "/";
 				});
+			},
+			logout: function () {
+				delete window.localStorage.user;
+				if (!window.localStorage.user && window.location.pathname !== "/Login") {
+					window.location = "/Login";
+				}
+			},
+			getUserInfo: function () {
+				if (window.localStorage.user) {
+					return JSON.parse(window.localStorage.user);
+				}
+				return {};
+			},
+			checkIfLoggedIn: function () {
+				if (!window.localStorage.user && window.location.pathname !== "/Login") {
+					window.location = "/Login";
+				}
 			}
 		};
 	}
