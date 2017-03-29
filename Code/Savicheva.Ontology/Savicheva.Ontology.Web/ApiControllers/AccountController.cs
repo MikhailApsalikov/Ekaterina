@@ -4,15 +4,15 @@
 	using System.Web.Http;
 	using AutoMapper;
 	using Entities;
+	using Interfaces;
 	using Models;
 	using Selp.Common.Entities;
 	using Selp.Controller;
-	using Selp.Interfaces;
 	using Validators;
 
 	public class AccountController : SelpController<AccountModel, AccountModel, Account, int>
 	{
-		public AccountController(ISelpRepository<Account, int> repository) : base(repository)
+		public AccountController(IAccountRepository repository) : base(repository)
 		{
 		}
 
@@ -41,28 +41,26 @@
 			validator.Validate();
 			if (!validator.IsValid)
 			{
-				return Ok(new
-				{
-					valid = false,
-					errors = validator.Errors
-				});
+				return Ok(new RepositoryModifyResult<bool?>(validator.Errors));
 			}
 
 			List<Account> result =
-				Repository.GetByCustomExpression(d => d.Id == model.Id && d.Password == model.Password);
+				Repository.GetByCustomExpression(d => d.Name == model.Name);
 			if (result.Count == 1)
 			{
-				return Ok(new { valid = true });
-			}
-
-			return Ok(new
-			{
-				valid = false,
-				errors = new List<ValidatorError>()
+				if (result[0].Password != model.Password)
 				{
-					new ValidatorError("Неверный логин/пароль")
+					return Ok(new RepositoryModifyResult<bool?>(new List<ValidatorError>
+					{
+						new ValidatorError("Неверный пароль")
+					}));
 				}
-			});
+				return Ok(new RepositoryModifyResult<bool?>(true));
+			}
+			return Ok(new RepositoryModifyResult<bool?>(new List<ValidatorError>
+			{
+				new ValidatorError("Такого пользователя не существует")
+			}));
 		}
 	}
 }

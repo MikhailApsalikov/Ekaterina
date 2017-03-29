@@ -1,10 +1,12 @@
 ﻿namespace Savicheva.Ontology.Web
 {
 	using System;
+	using System.Data.Entity;
 	using System.Web;
 	using System.Web.Http;
 	using System.Web.Mvc;
 	using System.Web.Routing;
+	using Repositories;
 
 	public class Global : HttpApplication
 	{
@@ -16,6 +18,7 @@
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			AutoMapperConfig.RegisterMappings();
 			UnityConfig.Register(GlobalConfiguration.Configuration);
+			Database.SetInitializer(new TestDataInitializer());
 		}
 	}
 }

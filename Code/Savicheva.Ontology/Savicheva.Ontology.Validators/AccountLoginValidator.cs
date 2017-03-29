@@ -16,18 +16,18 @@ namespace Savicheva.Ontology.Validators
 		{
 			if (User == null)
 			{
-				AddError("Неверный логин/пароль");
+				AddError("Введите имя пользователя и пароль");
 				return;
 			}
 
 			if (string.IsNullOrWhiteSpace(User.Name))
 			{
-				AddError("Введите логин", "Id");
+				AddError("Введите логин", "Логин");
 			}
 
 			if (string.IsNullOrWhiteSpace(User.Password))
 			{
-				AddError("Введите пароль", "Password");
+				AddError("Введите пароль", "Пароль");
 			}
 		}
 

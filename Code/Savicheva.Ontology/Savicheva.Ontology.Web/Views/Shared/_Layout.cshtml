@@ -6,6 +6,7 @@
 	<title>@ViewBag.Title</title>
 	<link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="~/node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+	<link href="~/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" />
 	<link href="~/Content/main.css" rel="stylesheet" />
 	@RenderSection("css", true)
 </head>
@@ -53,11 +54,34 @@
 	<div class="main-content">
 		@RenderBody()
 	</div>
+	<div class="error-container">
+		<script type="text/ng-template" id="error.html">
+			<div class="modal-header">
+				<h3 class="modal-title" id="modal-title" ng-if="errors.length === 1">Произошла ошибка!</h3>
+				<h3 class="modal-title" id="modal-title" ng-if="errors.length !== 1">Произошли ошибки!</h3>
+			</div>
+			<div class="modal-body" id="modal-body">
+				<ul>
+					<li ng-repeat="error in errors track by $index">
+						<span ng-if="!!error.FieldName">Ошибка в поле "{{error.FieldName}}": {{error.Text}}</span>
+						<span ng-if="!error.FieldName">{{error.Text}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" type="button" ng-click="ok()">OK</button>
+			</div>
+		</script>
+	</div>
 	<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="~/node_modules/angular/angular.js"></script>
+	<script src="~/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+	<script src="~/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 	<script src="~/AngularApp/app.js"></script>
 	<script src="~/AngularApp/Services/baseService.js"></script>
+	<script src="~/AngularApp/Services/errorService.js"></script>
+	<script src="~/AngularApp/Controllers/errorController.js"></script>
 	@RenderSection("scripts", true)
 </body>
 </html>

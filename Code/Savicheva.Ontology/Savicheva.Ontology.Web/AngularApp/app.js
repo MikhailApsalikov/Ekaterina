@@ -1,6 +1,6 @@
 ﻿(function () {
 	"use strict";
-	window.angular.module("APP", [])
+	window.angular.module("APP", ['ui.bootstrap'])
 		.config([
 			function () {
 				
