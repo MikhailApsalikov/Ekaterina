@@ -12,7 +12,6 @@
 		};
 
 		function activate() {
-			console.log($scope.errors);
 		}
 
 		activate();

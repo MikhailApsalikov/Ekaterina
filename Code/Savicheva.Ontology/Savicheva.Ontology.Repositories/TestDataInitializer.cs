@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Savicheva.Ontology.Repositories
+﻿namespace Savicheva.Ontology.Repositories
 {
+	using System;
+	using System.Collections.Generic;
 	using System.Data.Entity;
+	using System.Linq;
 	using Entities;
 	using Entities.Enums;
 
@@ -18,6 +15,7 @@ namespace Savicheva.Ontology.Repositories
 		{
 			InitializeTestAccounts(context);
 		}
+
 		private void InitializeTestAccounts(UserDbContext context)
 		{
 			if (context.Accounts.Any())
@@ -56,6 +54,5 @@ namespace Savicheva.Ontology.Repositories
 
 			context.Accounts.AddRange(accounts);
 		}
-		
 	}
 }
