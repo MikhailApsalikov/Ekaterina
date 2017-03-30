@@ -4,7 +4,7 @@
 }
 
 @section css{
-<link href="~/Content/subject-list.css" rel="stylesheet" />
+	<link href="~/Content/subject-list.css" rel="stylesheet" />
 }
 
 @section scripts{
@@ -15,33 +15,33 @@
 	<h1>Список дисциплин</h1>
 	<table class="table table-bordered table-striped table-hover">
 		<thead>
-		<tr>
-			<th>
-				#
-			</th>
-			<th>
-				Название
-			</th>
-			<th>
-				Часы для проведения практических занятий
-			</th>
-			<th>
-				Часы для проведения лекций
-			</th>
-			<th>
-				Часы для проведения лабораторных работ
-			</th>
-			<th>
-				Часы для проведения коллоквиумов
-			</th>
-			<th>
-				Часы для индивидуальных занятий
-			</th>
-			<th>
-				Форма контроля
-			</th>
-			<th></th>
-		</tr>
+			<tr>
+				<th>
+					#
+				</th>
+				<th>
+					Название
+				</th>
+				<th>
+					Часы для проведения практических занятий
+				</th>
+				<th>
+					Часы для проведения лекций
+				</th>
+				<th>
+					Часы для проведения лабораторных работ
+				</th>
+				<th>
+					Часы для проведения коллоквиумов
+				</th>
+				<th>
+					Часы для индивидуальных занятий
+				</th>
+				<th>
+					Форма контроля
+				</th>
+				<th ng-if="canEdit()"></th>
+			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="subject in subjects track by $index">
@@ -54,7 +54,7 @@
 				<th ng-bind="subject.HasHourForKoll"></th>
 				<th ng-bind="subject.HasHourForInd"></th>
 				<th ng-bind="formatFormsOfControl(subject.FormsOfControl)"></th>
-				<th class="actions">
+				<th class="actions" ng-if="canEdit()">
 					<button class="btn btn-default">Редактировать</button>
 					<button class="btn btn-danger" ng-click="remove(subject.Id)">Удалить</button>
 				</th>

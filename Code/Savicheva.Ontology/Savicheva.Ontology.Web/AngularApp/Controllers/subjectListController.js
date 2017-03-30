@@ -3,10 +3,14 @@
 	var angular = window.angular;
 	angular
       .module('APP')
-      .controller('subjectListController', ['$scope', 'baseService', subjectListController]);
+      .controller('subjectListController', ['$scope', 'baseService', 'loginService', subjectListController]);
 
-	function subjectListController($scope, service) {
+	function subjectListController($scope, service, loginService) {
 		$scope.subjects = [];
+		$scope.userRole = loginService.getUserInfo().Role;
+		$scope.canEdit = function() {
+			return $scope.userRole !== 0;
+		};
 
 		$scope.reload = function() {
 			service.getList("subject").then(function(data) {
