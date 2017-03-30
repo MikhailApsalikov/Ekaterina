@@ -19,6 +19,9 @@
 		};
 
 		$scope.logout = loginService.logout;
+		$scope.isAdmin = function() {
+			return $scope.role === roles[2];
+		};
 
 		function updateUserInfo() {
 			var userInfo = loginService.getUserInfo();

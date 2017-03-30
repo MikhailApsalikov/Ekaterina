@@ -36,6 +36,7 @@
 					<li class="dropdown" ng-if="isLoggedIn()">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{userName}} ({{role}})<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+							<li><a href="/UserManagement" ng-if="isAdmin()">Управление пользователями</a></li>
 							<li><a href="#" ng-click="logout()">Выйти</a></li>
 						</ul>
 					</li>
