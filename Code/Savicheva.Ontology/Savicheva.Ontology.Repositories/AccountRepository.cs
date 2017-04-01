@@ -7,6 +7,7 @@
 	using Selp.Common.Entities;
 	using Selp.Interfaces;
 	using Selp.Repository;
+	using Validators;
 
 	public class AccountRepository : SelpRepository<Account, int>, IAccountRepository
 	{
@@ -29,6 +30,12 @@
 		protected override IQueryable<Account> ApplyFilters(IQueryable<Account> entities, BaseFilter filter)
 		{
 			return entities;
+		}
+
+		protected override void OnUpdating(int key, Account item)
+		{
+			UpdateValidator = new AccountValidator(item);
+			base.OnUpdating(key, item);
 		}
 	}
 }

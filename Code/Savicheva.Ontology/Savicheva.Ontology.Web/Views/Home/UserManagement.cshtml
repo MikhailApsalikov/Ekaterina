@@ -8,7 +8,43 @@
 }
 
 @section scripts{
-
+	<script src="~/AngularApp/Controllers/userManagementController.js"></script>
 }
 
-<h1>Страница находится в разработке!</h1>
+<div ng-controller="userManagementController">
+	<div ng-if="isPageVisible()">
+		<h1>Управление пользователями</h1>
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>
+						#
+					</th>
+					<th>
+						Имя
+					</th>
+					<th>
+						Роль
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="account in data track by $index">
+					<th ng-bind="account.Id"></th>
+					<th ng-bind="account.Name"></th>
+
+					<th ng-bind="userRoleString(account.Role)"></th>
+					<th class="actions">
+						<button class="btn btn-default" ng-if="account.Role < 2" ng-click="up(account)">Повысить</button>
+						<button class="btn btn-default" ng-if="account.Role > 0" ng-click="down(account)">Понизить</button>
+						<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-if="!isPageVisible()">
+		<h1 class="authorization-error">Страница недоступна для роли "{{role}}"</h1>
+	</div>
+</div>

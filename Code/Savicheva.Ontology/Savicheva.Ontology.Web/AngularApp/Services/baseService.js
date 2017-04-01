@@ -3,9 +3,9 @@
 	var angular = window.angular;
 	angular
 		.module("APP")
-		.service("baseService", ["$http", 'errorService', policyService]);
+		.service("baseService", ["$http", 'errorService', baseService]);
 
-	function policyService($http, errorService) {
+	function baseService($http, errorService) {
 		return {
 			getList: function (controllerName, params) {
 				return $http({
@@ -33,12 +33,13 @@
 					url: "api/" + controllerName,
 					method: "POST",
 					data: entity
-				}).then(function (responce) {
-					if (!responce.data.IsValid) {
-						errorService.open(responce.data.Errors);
+				}).then(function () {
+					return responce.data;
+				}, function (responce) {
+					if (responce.data.isValid === false) {
+						errorService.open(responce.data.errors);
 						return;
 					}
-					return responce.data;
 				});
 			},
 			update: function (controllerName, id, entity) {
@@ -50,12 +51,13 @@
 					params: {
 						id: id
 					}
-				}).then(function (responce) {
-					if (!responce.data.IsValid) {
-						errorService.open(responce.data.Errors);
+				}).then(function () {
+					return responce.data;
+				}, function (responce) {
+					if (responce.data.isValid === false) {
+						errorService.open(responce.data.errors);
 						return;
 					}
-					return responce.data;
 				});
 			},
 			remove: function (controllerName, id) {

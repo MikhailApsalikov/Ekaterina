@@ -2,8 +2,8 @@
 {
 	public enum AccountRole
 	{
-		User,
-		Expert,
-		Admin
+		User = 0,
+		Expert = 1,
+		Admin = 2
 	}
 }

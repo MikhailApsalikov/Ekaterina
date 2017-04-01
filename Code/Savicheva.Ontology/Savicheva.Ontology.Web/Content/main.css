@@ -1,3 +1,9 @@
 ﻿.main-content {
 	margin: 15px;
 }
+
+.authorization-error {
+	color: red;
+	text-align: center;
+	margin-top: 100px;
+}
