@@ -3,9 +3,9 @@
 	var angular = window.angular;
 	angular
       .module('APP')
-      .controller('userManagementController', ['$scope', 'loginService', 'baseService', userManagementController]);
+      .controller('userManagementController', ['$scope', 'loginService', 'baseService', 'modalService', userManagementController]);
 
-	function userManagementController($scope, loginService, service) {
+	function userManagementController($scope, loginService, service, modalService) {
 		var roles = [
 			'Пользователь',
 			'Эксперт',
@@ -29,9 +29,11 @@
 			return roles[role];
 		};
 
-		$scope.create = function (account) {
-			service.update("account", account.Id, account).then(function () {
-				$scope.reload();
+		$scope.create = function(account) {
+			modalService.openCustom({}, 'create-user.html', 'userCreateController', function(account) {
+				service.create("account", account).then(function() {
+					$scope.reload();
+				});
 			});
 		};
 

@@ -21,7 +21,7 @@
 
 		public override RepositoryModifyResult<Account> Create(Account entity)
 		{
-			var validator = new AccountValidator(entity);
+			var validator = new AccountCreateValidator(entity, this);
 			validator.Validate();
 			if (!validator.IsValid)
 			{

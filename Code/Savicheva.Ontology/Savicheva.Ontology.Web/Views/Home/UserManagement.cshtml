@@ -9,39 +9,41 @@
 
 @section scripts{
 	<script src="~/AngularApp/Controllers/userManagementController.js"></script>
+	<script src="~/AngularApp/Controllers/userCreateController.js"></script>
 }
 
 <div ng-controller="userManagementController">
 	<div ng-if="isPageVisible()">
+		<button class="btn btn-default pull-right" ng-click="create()">Создать нового пользователя</button>
 		<h1>Управление пользователями</h1>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
-			<tr>
-				<th>
-					#
-				</th>
-				<th>
-					Имя
-				</th>
-				<th>
-					Роль
-				</th>
-				<th></th>
-			</tr>
+				<tr>
+					<th>
+						#
+					</th>
+					<th>
+						Имя пользователя
+					</th>
+					<th>
+						Роль
+					</th>
+					<th></th>
+				</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="account in data track by $index">
-				<th ng-bind="account.Id"></th>
-				<th ng-bind="account.Name"></th>
+				<tr ng-repeat="account in data track by $index">
+					<th ng-bind="account.Id"></th>
+					<th ng-bind="account.Name"></th>
 
-				<th ng-bind="userRoleString(account.Role)"></th>
-				<th class="actions">
-					<button class="btn btn-default" ng-if="account.Role !== 2" ng-click="toRole(account, 2)">Сделать администратором</button>
-					<button class="btn btn-default" ng-if="account.Role !== 1" ng-click="toRole(account, 1)">Сделать экспертом</button>
-					<button class="btn btn-default" ng-if="account.Role !== 0" ng-click="toRole(account, 0)">Сделать пользователем</button>
-					<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
-				</th>
-			</tr>
+					<th ng-bind="userRoleString(account.Role)"></th>
+					<th class="actions">
+						<button class="btn btn-default" ng-if="account.Role !== 2" ng-click="toRole(account, 2)">Сделать администратором</button>
+						<button class="btn btn-default" ng-if="account.Role !== 1" ng-click="toRole(account, 1)">Сделать экспертом</button>
+						<button class="btn btn-default" ng-if="account.Role !== 0" ng-click="toRole(account, 0)">Сделать пользователем</button>
+						<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
+					</th>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -54,15 +56,18 @@
 			<h3 class="modal-title" id="modal-title">Создание нового пользователя</h3>
 		</div>
 		<div class="modal-body" id="modal-body">
-			<ul>
-				<li ng-repeat="error in errors track by $index">
-					<span ng-if="!!error.FieldName">Ошибка в поле "{{error.FieldName}}": {{error.Text}}</span>
-					<span ng-if="!error.FieldName">{{error.Text}}</span>
-				</li>
-			</ul>
+			<div class="form-group">
+				<label for="login">Имя пользователя</label>
+				<input type="text" class="form-control" id="login" placeholder="Имя пользователя" ng-model="login">
+			</div>
+			<div class="form-group">
+				<label for="password">Пароль</label>
+				<input type="password" class="form-control" id="password" placeholder="Пароль" ng-model="password">
+			</div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-danger" type="button" ng-click="ok()">OK</button>
+			<button class="btn btn-default" type="button" ng-click="cancel()">Отмена</button>
+			<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 		</div>
 	</script>
 </div>

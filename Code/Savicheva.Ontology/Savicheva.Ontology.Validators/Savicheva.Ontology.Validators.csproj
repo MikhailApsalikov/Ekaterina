@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountCreateValidator.cs" />
     <Compile Include="AccountLoginValidator.cs" />
     <Compile Include="AccountValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\Savicheva.Ontology.Entities\Savicheva.Ontology.Entities.csproj">
       <Project>{19ebdc2e-8946-4239-82dd-d2ed884641c9}</Project>
       <Name>Savicheva.Ontology.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Savicheva.Ontology.Interfaces\Savicheva.Ontology.Interfaces.csproj">
+      <Project>{45FF7DED-DA3E-4C54-8218-080708A75A95}</Project>
+      <Name>Savicheva.Ontology.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Savicheva.Ontology.Models\Savicheva.Ontology.Models.csproj">
       <Project>{14C067E7-5CCD-4F28-B846-CA8C408ED081}</Project>

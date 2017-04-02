@@ -1,16 +1,18 @@
-﻿using System;
-
-namespace Savicheva.Ontology.Validators
+﻿namespace Savicheva.Ontology.Validators
 {
 	using Models;
 	using Selp.Validator;
+
 	public class AccountLoginValidator : SelpValidator
 	{
-		public AccountModel User { get; set; }
 		public AccountLoginValidator(AccountModel user)
 		{
 			User = user;
 		}
+
+		public AccountModel User { get; set; }
+
+		public override string EntityName => "Account";
 
 		protected override void ValidateLogic()
 		{
@@ -22,7 +24,7 @@ namespace Savicheva.Ontology.Validators
 
 			if (string.IsNullOrWhiteSpace(User.Name))
 			{
-				AddError("Введите логин", "Логин");
+				AddError("Введите имя пользователя", "Имя пользователя");
 			}
 
 			if (string.IsNullOrWhiteSpace(User.Password))
@@ -30,7 +32,5 @@ namespace Savicheva.Ontology.Validators
 				AddError("Введите пароль", "Пароль");
 			}
 		}
-
-		public override string EntityName => "Account";
 	}
 }
