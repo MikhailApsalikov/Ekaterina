@@ -19,6 +19,17 @@
 		public override string FakeRemovingPropertyName => "IsRemoved";
 		public override IDbSet<Account> DbSet => ((UserDbContext)DbContext).Accounts;
 
+		public override RepositoryModifyResult<Account> Create(Account entity)
+		{
+			var validator = new AccountValidator(entity);
+			validator.Validate();
+			if (!validator.IsValid)
+			{
+				return new RepositoryModifyResult<Account>(validator.Errors);
+			}
+			return base.Create(entity);
+		}
+
 		public override RepositoryModifyResult<Account> Update(int id, Account entity)
 		{
 			var validator = new AccountValidator(entity);

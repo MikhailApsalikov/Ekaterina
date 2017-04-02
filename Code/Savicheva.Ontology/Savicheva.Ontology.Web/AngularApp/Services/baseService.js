@@ -33,7 +33,7 @@
 					url: "api/" + controllerName,
 					method: "POST",
 					data: entity
-				}).then(function () {
+				}).then(function (responce) {
 					return responce.data;
 				}, function (responce) {
 					if (responce.data.isValid === false) {
@@ -51,7 +51,7 @@
 					params: {
 						id: id
 					}
-				}).then(function () {
+				}).then(function (responce) {
 					return responce.data;
 				}, function (responce) {
 					if (responce.data.isValid === false) {

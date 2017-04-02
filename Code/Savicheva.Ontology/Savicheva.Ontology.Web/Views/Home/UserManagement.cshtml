@@ -16,35 +16,53 @@
 		<h1>Управление пользователями</h1>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
-				<tr>
-					<th>
-						#
-					</th>
-					<th>
-						Имя
-					</th>
-					<th>
-						Роль
-					</th>
-					<th></th>
-				</tr>
+			<tr>
+				<th>
+					#
+				</th>
+				<th>
+					Имя
+				</th>
+				<th>
+					Роль
+				</th>
+				<th></th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="account in data track by $index">
-					<th ng-bind="account.Id"></th>
-					<th ng-bind="account.Name"></th>
+			<tr ng-repeat="account in data track by $index">
+				<th ng-bind="account.Id"></th>
+				<th ng-bind="account.Name"></th>
 
-					<th ng-bind="userRoleString(account.Role)"></th>
-					<th class="actions">
-						<button class="btn btn-default" ng-if="account.Role < 2" ng-click="up(account)">Повысить</button>
-						<button class="btn btn-default" ng-if="account.Role > 0" ng-click="down(account)">Понизить</button>
-						<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
-					</th>
-				</tr>
+				<th ng-bind="userRoleString(account.Role)"></th>
+				<th class="actions">
+					<button class="btn btn-default" ng-if="account.Role !== 2" ng-click="toRole(account, 2)">Сделать администратором</button>
+					<button class="btn btn-default" ng-if="account.Role !== 1" ng-click="toRole(account, 1)">Сделать экспертом</button>
+					<button class="btn btn-default" ng-if="account.Role !== 0" ng-click="toRole(account, 0)">Сделать пользователем</button>
+					<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
+				</th>
+			</tr>
 			</tbody>
 		</table>
 	</div>
 	<div ng-if="!isPageVisible()">
 		<h1 class="authorization-error">Страница недоступна для роли "{{role}}"</h1>
 	</div>
+
+	<script type="text/ng-template" id="create-user.html">
+		<div class="modal-header">
+			<h3 class="modal-title" id="modal-title">Создание нового пользователя</h3>
+		</div>
+		<div class="modal-body" id="modal-body">
+			<ul>
+				<li ng-repeat="error in errors track by $index">
+					<span ng-if="!!error.FieldName">Ошибка в поле "{{error.FieldName}}": {{error.Text}}</span>
+					<span ng-if="!error.FieldName">{{error.Text}}</span>
+				</li>
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-danger" type="button" ng-click="ok()">OK</button>
+		</div>
+	</script>
 </div>

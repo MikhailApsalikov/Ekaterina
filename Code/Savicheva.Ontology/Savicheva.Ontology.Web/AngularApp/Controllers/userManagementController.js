@@ -29,15 +29,14 @@
 			return roles[role];
 		};
 
-		$scope.up = function (account) {
-			account.Role = account.Role + 1;
+		$scope.create = function (account) {
 			service.update("account", account.Id, account).then(function () {
 				$scope.reload();
 			});
 		};
 
-		$scope.down = function (account) {
-			account.Role = account.Role - 1;
+		$scope.toRole = function (account, roleId) {
+			account.Role = roleId;
 			service.update("account", account.Id, account).then(function () {
 				$scope.reload();
 			});
