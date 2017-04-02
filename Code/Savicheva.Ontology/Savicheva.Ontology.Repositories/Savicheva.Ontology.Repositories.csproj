@@ -43,15 +43,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Selp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selp.Common.1.0.0.1\lib\net461\Selp.Common.dll</HintPath>
+      <HintPath>..\packages\Selp.Common.1.0.0.3\lib\net461\Selp.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Selp.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selp.Interfaces.1.0.0.0\lib\net461\Selp.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Selp.Interfaces.1.0.0.3\lib\net461\Selp.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Selp.Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selp.Repository.1.0.0.0\lib\net461\Selp.Repository.dll</HintPath>
+      <HintPath>..\packages\Selp.Repository.1.0.0.3\lib\net461\Selp.Repository.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Selp.Validator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selp.Validator.1.0.0.4\lib\net461\Selp.Validator.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

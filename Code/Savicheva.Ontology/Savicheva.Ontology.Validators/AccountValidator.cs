@@ -22,7 +22,7 @@
 				return;
 			}
 
-			AddError("Кате нельзя ничего делать");
+			AddError("Кате нельзя ничего трогать!!!", "Катя");
 
 			if (string.IsNullOrWhiteSpace(User.Name))
 			{

@@ -17,7 +17,18 @@
 
 		public override bool IsRemovingFake => true;
 		public override string FakeRemovingPropertyName => "IsRemoved";
-		public override IDbSet<Account> DbSet => ((UserDbContext) DbContext).Accounts;
+		public override IDbSet<Account> DbSet => ((UserDbContext)DbContext).Accounts;
+
+		public override RepositoryModifyResult<Account> Update(int id, Account entity)
+		{
+			var validator = new AccountValidator(entity);
+			validator.Validate();
+			if (!validator.IsValid)
+			{
+				return new RepositoryModifyResult<Account>(validator.Errors);
+			}
+			return base.Update(id, entity);
+		}
 
 		protected override Account Merge(Account source, Account destination)
 		{
@@ -30,12 +41,6 @@
 		protected override IQueryable<Account> ApplyFilters(IQueryable<Account> entities, BaseFilter filter)
 		{
 			return entities;
-		}
-
-		protected override void OnUpdating(int key, Account item)
-		{
-			UpdateValidator = new AccountValidator(item);
-			base.OnUpdating(key, item);
 		}
 	}
 }
