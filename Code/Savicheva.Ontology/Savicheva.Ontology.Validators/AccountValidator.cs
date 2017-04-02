@@ -18,11 +18,9 @@
 		{
 			if (User == null)
 			{
-				AddError("Введите имя пользователя и пароль");
+				AddError("Ошибка валидатора: User = null");
 				return;
 			}
-
-			AddError("Кате нельзя ничего трогать!!!", "Катя");
 
 			if (string.IsNullOrWhiteSpace(User.Name))
 			{
