@@ -27,7 +27,7 @@
 		[HttpGet]
 		public IHttpActionResult Get()
 		{
-			List<SubjectModel> list = _repository.GetAll().Select(MapEntityToShortModel).ToList();
+			List<SubjectModel> list = _repository.GetAll().Select(MapEntityToShortModel).OrderBy(s=>s.Id).ToList();
 			var content = new EntitiesListResult<SubjectModel>
 			{
 				Data = list,

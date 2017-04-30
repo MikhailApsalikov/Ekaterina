@@ -10,7 +10,6 @@
 		Subject GetById(int id);
 		void Remove(int id);
 		RepositoryModifyResult<Subject> Create(Subject entity);
-		List<Subject> GetByFilter(BaseFilter filter, out int total);
 		RepositoryModifyResult<Subject> Update(int id, Subject entity);
 	}
 }

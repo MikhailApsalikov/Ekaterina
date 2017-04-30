@@ -227,6 +227,7 @@
     <Content Include="Views\Home\Department.cshtml" />
     <Content Include="Views\Home\SubjectView.cshtml" />
     <Content Include="Views\Home\SubjectEdit.cshtml" />
+    <Content Include="App_Data\Ontology.owl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -235,7 +236,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
