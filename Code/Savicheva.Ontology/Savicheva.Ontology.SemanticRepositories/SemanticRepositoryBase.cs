@@ -4,23 +4,20 @@
 	using System.Linq;
 	using System.Web.Hosting;
 	using Helpers;
+	using Interfaces;
 	using Selp.Interfaces;
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
 	public abstract class SemanticRepositoryBase<TEntity> where TEntity : ISelpEntity<int>
 	{
-		public const string OntologyPath = "~/App_Data/Ontology.owl";
+		protected IGraphProxy GraphProxy { get; }
 
-		protected SemanticRepositoryBase()
+		protected SemanticRepositoryBase(IGraphProxy graphProxy)
 		{
-			Filename = HostingEnvironment.MapPath(OntologyPath);
-			LoadGraph();
+			GraphProxy = graphProxy;
+			GraphProxy.LoadGraph();
 		}
-
-		public OntologyGraph Graph { get; private set; }
-
-		public string Filename { get; }
 
 		protected abstract string EntityName { get; }
 
@@ -41,25 +38,13 @@
 			OntologyResource instance = GetClass(EntityName).Instances.FirstOrDefault(s => s.GetId() == id);
 			if (instance == null)
 				return;
-			Graph.Retract(instance.Triples.ToList());
-			SaveChanges();
-		}
-
-		protected void LoadGraph()
-		{
-			Graph = new OntologyGraph();
-			Graph.LoadFromFile(Filename);
-		}
-
-
-		protected void SaveChanges()
-		{
-			Graph.SaveToFile(Filename);
+			GraphProxy.Graph.Retract(instance.Triples.ToList());
+			GraphProxy.SaveChanges();
 		}
 
 		protected OntologyClass GetClass(string name)
 		{
-			return Graph.OwlClasses.FirstOrDefault(c => c.Resource.ToString().Contains(name));
+			return GraphProxy.Graph.OwlClasses.FirstOrDefault(c => c.Resource.ToString().Contains(name));
 		}
 
 		protected abstract TEntity Map(OntologyResource instance);

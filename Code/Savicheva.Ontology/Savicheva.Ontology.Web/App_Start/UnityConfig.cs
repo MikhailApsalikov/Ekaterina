@@ -4,7 +4,6 @@
 	using System.Collections.Generic;
 	using System.Web.Http;
 	using System.Web.Http.Dependencies;
-	using Entities;
 	using Interfaces;
 	using Microsoft.Practices.Unity;
 	using Repositories;
@@ -27,6 +26,10 @@
 
 			container.RegisterType<IAccountRepository, AccountRepository>(efConstructorParameter);
 			container.RegisterType<ISubjectRepository, SubjectRepository>();
+			
+			container.RegisterType<GraphProxy>(new ContainerControlledLifetimeManager());
+			container.RegisterType<IGraphProxy, GraphProxy>();
+
 			config.DependencyResolver = new UnityResolver(container);
 		}
 	}
@@ -38,9 +41,7 @@
 		public UnityResolver(IUnityContainer container)
 		{
 			if (container == null)
-			{
 				throw new ArgumentNullException("container");
-			}
 			this.container = container;
 		}
 

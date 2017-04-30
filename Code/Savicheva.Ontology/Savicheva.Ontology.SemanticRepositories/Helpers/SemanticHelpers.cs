@@ -1,6 +1,7 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories.Helpers
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Linq;
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
@@ -30,6 +31,12 @@
 			Triple triple = resource.TriplesWithSubject.FirstOrDefault(s => s.Predicate.ToString().EndsWith(propertyName));
 			LiteralNode ln = triple?.Object as LiteralNode;
 			return ln?.Value;
+		}
+
+		public static List<UriNode> GetObjectProperties(this OntologyResource resource, string propertyName, IGraph graph)
+		{
+			List<Triple> triples = resource.TriplesWithSubject.Where(s => s.Predicate.ToString().EndsWith(propertyName)).ToList();
+			return triples.Select(t => t.Object).Cast<UriNode>().ToList();
 		}
 
 		public static int GetId(this OntologyResource resource)

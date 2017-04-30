@@ -2,14 +2,20 @@
 {
 	using System.Collections.Generic;
 	using Entities;
+	using Helpers;
 	using Interfaces;
 	using Selp.Common.Entities;
-	using System.Linq;
-	using Helpers;
+	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
 	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
+		public SubjectRepository(IGraphProxy graphProxy) : base(graphProxy)
+		{
+		}
+
+		protected override string EntityName => "Subject";
+
 		public RepositoryModifyResult<Subject> Create(Subject entity)
 		{
 			return new RepositoryModifyResult<Subject>(entity);
@@ -31,10 +37,15 @@
 				HasHourForPract = instance.GetIntProperty("hasHourForPract"),
 				Title = instance.GetStringProperty("title"),
 				Id = instance.GetId(),
+				FormsOfControl = MapFormOfControl(instance)
 			};
 			return result;
 		}
 
-		protected override string EntityName => "Subject";
+		private List<FormOfControl> MapFormOfControl(OntologyResource instance)
+		{
+			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm", GraphProxy.Graph);
+			return null;
+		}
 	}
 }

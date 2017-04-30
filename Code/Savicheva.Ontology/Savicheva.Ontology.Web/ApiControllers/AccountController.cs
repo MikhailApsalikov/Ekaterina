@@ -71,7 +71,7 @@
 		[HttpGet]
 		public IHttpActionResult Export()
 		{
-			var stream = new FileStream(HostingEnvironment.MapPath(SemanticRepositoryBase<Subject>.OntologyPath), FileMode.Open);
+			var stream = new FileStream(HostingEnvironment.MapPath(GraphProxy.OntologyPath), FileMode.Open);
 			var result = new HttpResponseMessage(HttpStatusCode.OK)
 			{
 				Content = new StreamContent(stream)
