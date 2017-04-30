@@ -42,8 +42,13 @@
 		public static int GetId(this OntologyResource resource)
 		{
 			var node = resource.Resource as UriNode;
+			return GetId(node);
+		}
+
+		public static int GetId(this UriNode uriNode)
+		{
 			// ReSharper disable once PossibleNullReferenceException
-			return int.Parse(node.Uri.Segments.Last());
+			return int.Parse(uriNode.Uri.Segments.Last());
 		}
 	}
 }

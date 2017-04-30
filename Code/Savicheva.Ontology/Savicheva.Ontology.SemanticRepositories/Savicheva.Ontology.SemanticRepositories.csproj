@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormsOfControlRepository.cs" />
     <Compile Include="GraphProxy.cs" />
     <Compile Include="Helpers\SemanticHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

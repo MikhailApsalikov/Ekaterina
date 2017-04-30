@@ -1,6 +1,7 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
 	using System.Collections.Generic;
+	using System.Linq;
 	using Entities;
 	using Helpers;
 	using Interfaces;
@@ -10,8 +11,11 @@
 
 	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
-		public SubjectRepository(IGraphProxy graphProxy) : base(graphProxy)
+		private readonly IFormsOfControlRepository _formsOfControlRepository;
+
+		public SubjectRepository(IGraphProxy graphProxy, IFormsOfControlRepository formsOfControlRepository) : base(graphProxy)
 		{
+			_formsOfControlRepository = formsOfControlRepository;
 		}
 
 		protected override string EntityName => "Subject";
@@ -45,7 +49,8 @@
 		private List<FormOfControl> MapFormOfControl(OntologyResource instance)
 		{
 			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm", GraphProxy.Graph);
-			return null;
+
+			return formsOfControl.Select(f=>_formsOfControlRepository.GetById(f.GetId())).ToList();
 		}
 	}
 }
