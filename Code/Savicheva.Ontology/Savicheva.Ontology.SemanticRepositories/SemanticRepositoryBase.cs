@@ -4,6 +4,7 @@
 	using System.IO;
 	using System.Linq;
 	using System.Web.Hosting;
+	using Helpers;
 	using Selp.Interfaces;
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
@@ -32,10 +33,27 @@
 			return GetAll().FirstOrDefault(s => s.Id == id);
 		}
 
+		public virtual void Remove(int id)
+		{
+			OntologyResource instance = GetClass(EntityName).Instances.FirstOrDefault(s => s.GetId() == id);
+			if (instance == null)
+			{
+				return;
+			}
+			Graph.Retract(instance.Triples.ToList());
+			SaveChanges();
+		}
+
 		protected void LoadGraph()
 		{
 			Graph = new OntologyGraph();
 			Graph.LoadFromFile(Filename);
+		}
+
+
+		protected void SaveChanges()
+		{
+			Graph.SaveToFile(Filename);
 		}
 
 		protected OntologyClass GetClass(string name)

@@ -10,11 +10,6 @@
 
 	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
-		public void Remove(int id)
-		{
-			
-		}
-
 		public RepositoryModifyResult<Subject> Create(Subject entity)
 		{
 			return new RepositoryModifyResult<Subject>(entity);
