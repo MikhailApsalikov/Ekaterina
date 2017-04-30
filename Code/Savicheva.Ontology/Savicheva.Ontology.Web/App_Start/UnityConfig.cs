@@ -26,7 +26,7 @@
 			var efConstructorParameter = new InjectionConstructor(dbContext, container.Resolve<ISelpConfiguration>());
 
 			container.RegisterType<IAccountRepository, AccountRepository>(efConstructorParameter);
-			container.RegisterType<ISelpRepository<Subject, int>, SubjectRepository>();
+			container.RegisterType<ISubjectRepository, SubjectRepository>();
 			config.DependencyResolver = new UnityResolver(container);
 		}
 	}

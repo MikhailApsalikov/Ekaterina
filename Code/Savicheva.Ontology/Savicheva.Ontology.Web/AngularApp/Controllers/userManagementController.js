@@ -29,7 +29,7 @@
 			return roles[role];
 		};
 
-		$scope.create = function(account) {
+		$scope.create = function() {
 			modalService.openCustom({}, 'create-user.html', 'userCreateController', function(account) {
 				service.create("account", account).then(function() {
 					$scope.reload();

@@ -1,14 +1,12 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Linq.Expressions;
 	using Entities;
+	using Interfaces;
 	using Selp.Common.Entities;
-	using Selp.Interfaces;
 
-	public class SubjectRepository : ISelpRepository<Subject, int>
+	public class SubjectRepository : SemanticRepositoryBase, ISubjectRepository
 	{
 		private readonly List<Subject> subjects = new List<Subject>
 		{
@@ -92,11 +90,6 @@
 		public void Remove(int id)
 		{
 			subjects.RemoveAt(id);
-		}
-
-		public List<Subject> GetByCustomExpression(Expression<Func<Subject, bool>> customExpression)
-		{
-			throw new NotSupportedException();
 		}
 
 		public RepositoryModifyResult<Subject> Create(Subject entity)

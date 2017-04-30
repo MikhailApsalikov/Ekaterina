@@ -1,30 +1,56 @@
 ﻿namespace Savicheva.Ontology.Web.ApiControllers
 {
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web.Http;
 	using AutoMapper;
 	using Entities;
+	using Interfaces;
 	using Models;
-	using Selp.Controller;
-	using Selp.Interfaces;
+	using Selp.Common.Entities;
 
-	public class SubjectController : SelpController<SubjectModel, SubjectModel, Subject, int>
+	public class SubjectController : ApiController
 	{
-		public SubjectController(ISelpRepository<Subject, int> repository) : base(repository)
+		private readonly ISubjectRepository _repository;
+
+		public SubjectController(ISubjectRepository repository)
 		{
+			_repository = repository;
 		}
 
-		public override string ControllerName => "Subject";
+		[HttpGet]
+		public IHttpActionResult Get(int id)
+		{
+			return Ok(MapEntityToModel(_repository.GetById(id)));
+		}
 
-		protected override SubjectModel MapEntityToModel(Subject entity)
+		[HttpGet]
+		public IHttpActionResult Get()
+		{
+			List<SubjectModel> list = _repository.GetAll().Select(MapEntityToShortModel).ToList();
+			var content = new EntitiesListResult<SubjectModel>
+			{
+				Data = list,
+				Page = -1,
+				PageSize = -1
+			};
+			;
+			content.Total = list.Count;
+			return Ok(content);
+		}
+
+
+		private SubjectModel MapEntityToModel(Subject entity)
 		{
 			return Mapper.Map<SubjectModel>(entity);
 		}
 
-		protected override Subject MapModelToEntity(SubjectModel model)
+		private Subject MapModelToEntity(SubjectModel model)
 		{
 			return Mapper.Map<Subject>(model);
 		}
 
-		protected override SubjectModel MapEntityToShortModel(Subject entity)
+		private SubjectModel MapEntityToShortModel(Subject entity)
 		{
 			return Mapper.Map<SubjectModel>(entity);
 		}
