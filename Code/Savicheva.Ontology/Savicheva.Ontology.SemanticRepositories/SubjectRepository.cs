@@ -8,19 +8,8 @@
 	using Helpers;
 	using VDS.RDF.Ontology;
 
-	public class SubjectRepository : SemanticRepositoryBase, ISubjectRepository
+	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
-		public List<Subject> GetAll()
-		{
-			OntologyClass ontClass = GetClass("Subject");
-			return ontClass.Instances.Select(Map).ToList();
-		}
-
-		public Subject GetById(int id)
-		{
-			return null;
-		}
-
 		public void Remove(int id)
 		{
 			
@@ -36,9 +25,9 @@
 			return new RepositoryModifyResult<Subject>(entity);
 		}
 
-		private Subject Map(OntologyResource instance)
+		protected override Subject Map(OntologyResource instance)
 		{
-			var result = new Subject()
+			var result = new Subject
 			{
 				HasHourForInd = instance.GetIntProperty("hasHourForInd"),
 				HasHourForKoll = instance.GetIntProperty("hasHourForKoll"),
@@ -50,5 +39,7 @@
 			};
 			return result;
 		}
+
+		protected override string EntityName => "Subject";
 	}
 }
