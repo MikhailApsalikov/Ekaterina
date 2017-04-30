@@ -5,7 +5,7 @@
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
-	public static class SemanticHelpers
+	internal static class SemanticHelpers
 	{
 		public static int? GetIntProperty(this OntologyResource resource, string propertyName)
 		{

@@ -1,7 +1,6 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
 	using System.Collections.Generic;
-	using System.IO;
 	using System.Linq;
 	using System.Web.Hosting;
 	using Helpers;
@@ -11,15 +10,19 @@
 
 	public abstract class SemanticRepositoryBase<TEntity> where TEntity : ISelpEntity<int>
 	{
+		public const string OntologyPath = "~/App_Data/Ontology.owl";
+
+		protected SemanticRepositoryBase()
+		{
+			Filename = HostingEnvironment.MapPath(OntologyPath);
+			LoadGraph();
+		}
+
 		public OntologyGraph Graph { get; private set; }
 
 		public string Filename { get; }
 
-		protected SemanticRepositoryBase()
-		{
-			Filename = Path.Combine(HostingEnvironment.MapPath("~/App_Data/Ontology.owl"));
-			LoadGraph();
-		}
+		protected abstract string EntityName { get; }
 
 		public virtual List<TEntity> GetAll()
 		{
@@ -37,9 +40,7 @@
 		{
 			OntologyResource instance = GetClass(EntityName).Instances.FirstOrDefault(s => s.GetId() == id);
 			if (instance == null)
-			{
 				return;
-			}
 			Graph.Retract(instance.Triples.ToList());
 			SaveChanges();
 		}
@@ -58,11 +59,9 @@
 
 		protected OntologyClass GetClass(string name)
 		{
-			return Graph.OwlClasses.FirstOrDefault(c=>c.Resource.ToString().Contains(name));
+			return Graph.OwlClasses.FirstOrDefault(c => c.Resource.ToString().Contains(name));
 		}
 
 		protected abstract TEntity Map(OntologyResource instance);
-
-		protected abstract string EntityName { get; }
 	}
 }
