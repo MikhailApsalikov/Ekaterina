@@ -7,9 +7,9 @@
 
 	function subjectEditController($scope, service, loginService) {
 		$scope.subject = {};
-		$scope.userRole = loginService.getUserInfo().Role;
+		$scope.userRole = loginService.roles[loginService.getUserInfo().Role];
 		$scope.isPageVisible = function () {
-			return $scope.userRole !== 0;
+			return $scope.userRole !== loginService.roles[0];
 		};
 		$scope.formsOfControl = [
 			{

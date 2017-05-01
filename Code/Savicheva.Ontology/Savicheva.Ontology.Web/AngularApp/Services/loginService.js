@@ -37,7 +37,12 @@
 				if (!window.localStorage.user && window.location.pathname !== "/Login") {
 					window.location = "/Login";
 				}
-			}
+			},
+			roles: [
+				'Пользователь',
+				'Эксперт',
+				'Администратор'
+			]
 		};
 	}
 })();

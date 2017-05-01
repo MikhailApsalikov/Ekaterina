@@ -4,12 +4,18 @@
 }
 
 @section css{
-	<link href="~/Content/subject-edit.css" rel="stylesheet" />
+	<link href="~/Content/subject-edit.css" rel="stylesheet"/>
 }
 
 @section scripts{
 	<script src="~/AngularApp/Controllers/subjectEditController.js"></script>
 }
 <div ng-controller="subjectEditController">
-	<h1></h1>
+	<div ng-if="isPageVisible()">
+		<h1 ng-if="getId()">Редактирование дисциплины №{{getId()}}</h1>
+		<h1 ng-if="!getId()">Создание новой дисциплины</h1>
+	</div>
+	<div ng-if="!isPageVisible()">
+		<h1 class="authorization-error">Страница недоступна для роли "{{userRole}}"</h1>
+	</div>
 </div>
