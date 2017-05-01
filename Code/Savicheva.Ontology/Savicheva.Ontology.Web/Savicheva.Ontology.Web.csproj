@@ -186,6 +186,7 @@
     <Content Include="AngularApp\app.js" />
     <Content Include="AngularApp\Controllers\errorController.js" />
     <Content Include="AngularApp\Controllers\loginController.js" />
+    <Content Include="AngularApp\Controllers\subjectEditController.js" />
     <Content Include="AngularApp\Controllers\subjectListController.js" />
     <Content Include="AngularApp\Controllers\userCreateController.js" />
     <Content Include="AngularApp\Controllers\userManagementController.js" />
@@ -196,6 +197,7 @@
     <Content Include="AngularApp\Services\loginService.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\subject-edit.css" />
     <Content Include="Content\subject-list.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -225,7 +227,6 @@
     <Content Include="Views\Home\UserManagement.cshtml" />
     <Content Include="Views\Home\Departments.cshtml" />
     <Content Include="Views\Home\Department.cshtml" />
-    <Content Include="Views\Home\SubjectView.cshtml" />
     <Content Include="Views\Home\SubjectEdit.cshtml" />
     <Content Include="App_Data\Ontology.owl" />
     <None Include="Web.Debug.config">

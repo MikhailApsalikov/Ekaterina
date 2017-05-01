@@ -9,7 +9,7 @@
 		return {
 			getList: function (controllerName, params) {
 				return $http({
-					url: "api/" + controllerName,
+					url: window.baseUri + "api/" + controllerName,
 					method: "GET",
 					params: params
 				}).then(function (responce) {
@@ -18,7 +18,7 @@
 			},
 			getById: function (controllerName, id) {
 				return $http({
-					url: "api/" + controllerName,
+					url: window.baseUri + "api/" + controllerName,
 					method: "GET",
 					params: {
 						id: id
@@ -30,7 +30,7 @@
 			create: function (controllerName, entity) {
 				entity = angular.copy(entity);
 				return $http({
-					url: "api/" + controllerName,
+					url: window.baseUri + "api/" + controllerName,
 					method: "POST",
 					data: entity
 				}).then(function (responce) {
@@ -45,7 +45,7 @@
 			update: function (controllerName, id, entity) {
 				entity = angular.copy(entity);
 				return $http({
-					url: "api/" + controllerName,
+					url: window.baseUri + "api/" + controllerName,
 					method: "PUT",
 					data: entity,
 					params: {
@@ -62,7 +62,7 @@
 			},
 			remove: function (controllerName, id) {
 				return $http({
-					url: "api/" + controllerName,
+					url: window.baseUri + "api/" + controllerName,
 					method: "DELETE",
 					params: {
 						id: id
