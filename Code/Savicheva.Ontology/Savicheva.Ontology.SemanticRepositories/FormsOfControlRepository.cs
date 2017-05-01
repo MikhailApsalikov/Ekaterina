@@ -1,9 +1,12 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
 	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using Entities;
 	using Helpers;
 	using Interfaces;
+	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
 	public class FormsOfControlRepository : SemanticRepositoryBase<FormOfControl>, IFormsOfControlRepository
@@ -26,6 +29,11 @@
 		protected override void SetProperties(FormOfControl entity, Individual instance)
 		{
 			throw new NotSupportedException();
+		}
+
+		public IEnumerable<UriNode> GetAllNodes()
+		{
+			return GetClass(EntityName).Instances.Select(s=>s.Resource).Cast<UriNode>().ToList();
 		}
 	}
 }

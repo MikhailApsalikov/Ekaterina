@@ -38,7 +38,7 @@
 
 			if (filter.FormsOfControl.HasValue)
 			{
-				result = result.Where(s => s.FormsOfControl.Any(f=>f.Id == filter.FormsOfControl.Value));
+				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl.Value));
 			}
 
 			if (filter.HasHourForInd.HasValue)
@@ -103,7 +103,8 @@
 
 		private List<UriNode> FormOfControlToUriNodes(List<FormOfControl> focs)
 		{
-			return new List<UriNode>();
+			Dictionary<int, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes().ToDictionary(s => s.GetId());
+			return focs.Select(s => formsOfControlNodes[s.Id]).ToList();
 		}
 
 		private List<FormOfControl> MapFormOfControl(OntologyResource instance)

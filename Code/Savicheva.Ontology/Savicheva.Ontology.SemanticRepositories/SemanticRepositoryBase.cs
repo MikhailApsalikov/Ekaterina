@@ -38,6 +38,7 @@
 			var individual = GraphProxy.Graph.CreateIndividual(new Uri(new Uri(SemanticRepositories.GraphProxy.IndividualsDomain), id.ToString()), GetClass(EntityName).Resource.GraphUri);
 			SetProperties(entity, individual);
 			GraphProxy.SaveChanges();
+			GraphProxy.LoadGraph();
 			return id;
 		}
 

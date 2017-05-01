@@ -33,12 +33,25 @@
 		$scope.reload = function () {
 			if ($scope.getId()) {
 				service.getById("subject", $scope.getId()).then(function (data) {
+					if (data && data.FormsOfControl && data.FormsOfControl.length) {
+						for (var i = 0; i < data.FormsOfControl.length; i++) {
+							data.FormsOfControl[i] = data.FormsOfControl[i].Id + "";
+						}
+						$('.select-picker-foc').selectpicker('val', data.FormsOfControl);
+					}
+
 					$scope.subject = data;
 				});
 			}
 		};
 
 		$scope.save = function () {
+			if ($scope.subject && $scope.subject.FormsOfControl && $scope.subject.FormsOfControl.length) {
+				$scope.subject.FormsOfControl = _.map($scope.subject.FormsOfControl, function (foc) {
+					return +foc;
+				});
+			}
+
 			if ($scope.getId()) {
 				service.update("subject", $scope.getId(), $scope.subject).then(function () {
 					messageService.success("Дисциплина успешно сохранена в онтологию");
