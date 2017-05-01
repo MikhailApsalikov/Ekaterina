@@ -6,7 +6,7 @@
 
 	public interface ISubjectRepository
 	{
-		List<Subject> GetAll();
+		List<Subject> GetAll(SubjectFilter filter);
 		Subject GetById(int id);
 		void Remove(int id);
 		RepositoryModifyResult<Subject> Create(Subject entity);

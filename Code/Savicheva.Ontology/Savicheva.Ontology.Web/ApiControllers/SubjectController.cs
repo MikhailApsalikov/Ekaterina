@@ -36,11 +36,11 @@
 		}
 
 		[HttpGet]
-		public IHttpActionResult Get()
+		public IHttpActionResult Get([FromUri]SubjectFilter filter)
 		{
 			try
 			{
-				List<SubjectModel> list = _repository.GetAll().Select(MapEntityToShortModel).OrderBy(s => s.Id).ToList();
+				List<SubjectModel> list = _repository.GetAll(filter).Select(MapEntityToShortModel).OrderBy(s => s.Id).ToList();
 				var content = new EntitiesListResult<SubjectModel>
 				{
 					Data = list,

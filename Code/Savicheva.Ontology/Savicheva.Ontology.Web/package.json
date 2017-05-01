@@ -11,6 +11,7 @@
     "angular": "^1.6.3",
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap": "^3.3.7",
+    "bootstrap-select": "^1.12.2",
     "jquery": "^3.2.1"
   },
   "devDependencies": {},

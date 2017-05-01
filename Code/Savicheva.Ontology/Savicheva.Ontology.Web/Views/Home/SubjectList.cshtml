@@ -13,6 +13,54 @@
 
 <div ng-controller="subjectListController">
 	<h1>Список дисциплин</h1>
+	<div class="filters">
+		<div class="filter form-group">
+			<div class="filter-name">Название</div>
+			<div class="filter-value">
+				<input type="text" class="form-control" ng-model="filters.Title"/>
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Форма контроля</div>
+			<div class="filter-value">
+				<select class="selectpicker form-control" ng-model="filters.FormsOfControl">
+					<option ng-repeat="fc in formsOfControl" value="{{fc.id}}">{{fc.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Часы для проведения практических занятий</div>
+			<div class="filter-value">
+				<input type="number" class="form-control" ng-model="filters.HasHourForPract" />
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Часы для проведения лекций</div>
+			<div class="filter-value">
+				<input type="number" class="form-control" ng-model="filters.HasHourForLecture" />
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Часы для проведения лабораторных работ</div>
+			<div class="filter-value">
+				<input type="number" class="form-control" ng-model="filters.HasHourForLab" />
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Часы для проведения коллоквиумов</div>
+			<div class="filter-value">
+				<input type="number" class="form-control" ng-model="filters.HasHourForKoll" />
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Часы для индивидуальных занятий</div>
+			<div class="filter-value">
+				<input type="number" class="form-control" ng-model="filters.HasHourForInd" />
+			</div>
+		</div>
+		<button class="btn btn-primary filters-submit" ng-click="reload()">Применить фильтры</button>
+	</div>
+
 	<table class="table table-bordered table-striped table-hover">
 		<thead>
 			<tr>

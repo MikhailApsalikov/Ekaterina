@@ -11,9 +11,32 @@
 		$scope.canEdit = function() {
 			return $scope.userRole !== 0;
 		};
+		$scope.filters = {
+			Title: "",
+			FormsOfControl: null,
+			HasHourForPract: null,
+			HasHourForLecture: null,
+			HasHourForLab: null,
+			HasHourForKoll: null,
+			HasHourForInd: null
+		};
+		$scope.formsOfControl = [
+			{
+				id: null,
+				name: "---------------"
+			},
+			{
+				id: 25,
+				name: "Зачет"
+			},
+			{
+				id: 228,
+				name: "Экзамен"
+			}
+		];
 
 		$scope.reload = function() {
-			service.getList("subject").then(function(data) {
+			service.getList("subject", $scope.filters).then(function(data) {
 				$scope.subjects = data.Data;
 			});
 		};

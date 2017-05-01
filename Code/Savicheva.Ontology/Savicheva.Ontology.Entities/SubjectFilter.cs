@@ -1,9 +1,13 @@
 ﻿namespace Savicheva.Ontology.Entities
 {
-	using Selp.Common.Entities;
-
-	public class SubjectFilter : BaseFilter
+	public class SubjectFilter
 	{
-		public int? FormOfControl { get; set; }
+		public string Title { get; set; }
+		public int? FormsOfControl { get; set; }
+		public int? HasHourForPract { get; set; }
+		public int? HasHourForLecture { get; set; }
+		public int? HasHourForLab { get; set; }
+		public int? HasHourForKoll { get; set; }
+		public int? HasHourForInd { get; set; }
 	}
 }

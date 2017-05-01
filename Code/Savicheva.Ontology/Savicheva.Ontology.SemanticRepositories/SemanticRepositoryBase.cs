@@ -2,22 +2,20 @@
 {
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Web.Hosting;
 	using Helpers;
 	using Interfaces;
 	using Selp.Interfaces;
-	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
 	public abstract class SemanticRepositoryBase<TEntity> where TEntity : ISelpEntity<int>
 	{
-		protected IGraphProxy GraphProxy { get; }
-
 		protected SemanticRepositoryBase(IGraphProxy graphProxy)
 		{
 			GraphProxy = graphProxy;
 			GraphProxy.LoadGraph();
 		}
+
+		protected IGraphProxy GraphProxy { get; }
 
 		protected abstract string EntityName { get; }
 
