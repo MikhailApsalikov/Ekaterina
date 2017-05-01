@@ -1,5 +1,6 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using Entities;
@@ -21,15 +22,6 @@
 
 
 		protected override string EntityName => "Subject";
-
-		public int Create(Subject entity)
-		{
-			return 111;
-		}
-
-		public void Update(int id, Subject entity)
-		{
-		}
 
 		public List<Subject> GetAll(SubjectFilter filter)
 		{
@@ -98,9 +90,25 @@
 			return result;
 		}
 
+		protected override void SetProperties(Subject entity, Individual instance)
+		{
+			instance.SetStringProperty("title", entity.Title);
+			instance.SetIntProperty("hasHourForInd", entity.HasHourForInd);
+			instance.SetIntProperty("hasHourForKoll", entity.HasHourForKoll);
+			instance.SetIntProperty("hasHourForLab", entity.HasHourForLab);
+			instance.SetIntProperty("hasHourForLecture", entity.HasHourForLecture);
+			instance.SetIntProperty("hasHourForPract", entity.HasHourForPract);
+			instance.SetObjectProperties("hasForm", FormOfControlToUriNodes(entity.FormsOfControl));
+		}
+
+		private List<UriNode> FormOfControlToUriNodes(List<FormOfControl> focs)
+		{
+			return new List<UriNode>();
+		}
+
 		private List<FormOfControl> MapFormOfControl(OntologyResource instance)
 		{
-			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm", GraphProxy.Graph);
+			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm");
 
 			return formsOfControl.Select(f => formsOfControlRepository.GetById(f.GetId())).ToList();
 		}

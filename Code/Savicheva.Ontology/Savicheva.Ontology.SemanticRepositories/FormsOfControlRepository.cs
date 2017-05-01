@@ -1,5 +1,6 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
+	using System;
 	using Entities;
 	using Helpers;
 	using Interfaces;
@@ -20,6 +21,11 @@
 				Id = instance.GetId(),
 				Title = instance.GetStringProperty("title")
 			};
+		}
+
+		protected override void SetProperties(FormOfControl entity, Individual instance)
+		{
+			throw new NotSupportedException();
 		}
 	}
 }
