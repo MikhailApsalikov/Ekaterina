@@ -3,9 +3,9 @@
 	var angular = window.angular;
 	angular
       .module('APP')
-      .controller('subjectListController', ['$scope', 'baseService', 'loginService', subjectListController]);
+		.controller('subjectListController', ['$scope', 'baseService', 'loginService', 'messageService', subjectListController]);
 
-	function subjectListController($scope, service, loginService) {
+	function subjectListController($scope, service, loginService, messageService) {
 		$scope.subjects = [];
 		$scope.userRole = loginService.getUserInfo().Role;
 		$scope.canEdit = function() {
@@ -52,6 +52,7 @@
 
 		$scope.remove = function(id) {
 			service.remove("subject", id).then(function () {
+				messageService.success("Дисциплина успешно удалена из онтологии");
 				$scope.reload();
 			});
 		};

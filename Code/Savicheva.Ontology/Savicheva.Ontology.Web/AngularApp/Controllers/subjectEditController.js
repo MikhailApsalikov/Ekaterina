@@ -3,9 +3,9 @@
 	var angular = window.angular;
 	angular
 		.module('APP')
-		.controller('subjectEditController', ['$scope', 'baseService', 'loginService', subjectEditController]);
+		.controller('subjectEditController', ['$scope', 'baseService', 'loginService', 'messageService', subjectEditController]);
 
-	function subjectEditController($scope, service, loginService) {
+	function subjectEditController($scope, service, loginService, messageService) {
 		$scope.subject = {};
 		$scope.userRole = loginService.roles[loginService.getUserInfo().Role];
 		$scope.isPageVisible = function () {
@@ -23,6 +23,9 @@
 		];
 
 		$scope.getId = function () {
+			if ($scope.id) {
+				return $scope.id;
+			}
 			var url = window.location.href.split("/");
 			return +url[url.length - 1];
 		}
@@ -30,13 +33,22 @@
 		$scope.reload = function () {
 			if ($scope.getId()) {
 				service.getById("subject", $scope.getId()).then(function (data) {
-					$scope.subject = data.Data;
+					$scope.subject = data;
 				});
 			}
 		};
 
 		$scope.save = function () {
-			console.log("Saved", $scope.subject);
+			if ($scope.getId()) {
+				service.update("subject", $scope.getId(), $scope.subject).then(function () {
+					messageService.success("Дисциплина успешно сохранена в онтологию");
+				});
+			} else {
+				service.create("subject", $scope.subject).then(function (data) {
+					$scope.id = data.ModifiedEntity.Id;
+					messageService.success("Дисциплина успешно создана и сохранена в онтологии");
+				});
+			}
 		}
 
 		function activate() {

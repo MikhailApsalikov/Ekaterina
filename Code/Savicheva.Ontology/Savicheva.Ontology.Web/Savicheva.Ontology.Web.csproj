@@ -192,6 +192,7 @@
     <Content Include="AngularApp\Controllers\userManagementController.js" />
     <Content Include="AngularApp\Controllers\userOptionsController.js" />
     <Content Include="AngularApp\Services\baseService.js" />
+    <Content Include="AngularApp\Services\messageService.js" />
     <Content Include="AngularApp\Services\modalService.js" />
     <Content Include="AngularApp\Services\errorService.js" />
     <Content Include="AngularApp\Services\loginService.js" />

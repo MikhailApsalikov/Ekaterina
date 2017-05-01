@@ -51,6 +51,12 @@
 		</div>
 	</header>
 	<div class="main-content">
+		<div class="alert alert-success" ng-if="successMessage">
+			{{successMessage}}
+		</div>
+		<div class="alert alert-danger" ng-if="errorMessage">
+			{{errorMessage}}
+		</div>
 		@RenderBody()
 	</div>
 	<div class="error-container">
@@ -88,6 +94,7 @@
 	<script src="~/AngularApp/Controllers/userOptionsController.js"></script>
 	<script src="~/AngularApp/Services/loginService.js"></script>
 	<script src="~/AngularApp/Services/modalService.js"></script>
+	<script src="~/AngularApp/Services/messageService.js"></script>
 	@RenderSection("scripts", true)
 </body>
 </html>

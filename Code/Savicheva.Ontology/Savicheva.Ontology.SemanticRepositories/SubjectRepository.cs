@@ -11,25 +11,24 @@
 
 	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
-		private readonly IFormsOfControlRepository _formsOfControlRepository;
+		private readonly IFormsOfControlRepository formsOfControlRepository;
 
 		public SubjectRepository(IGraphProxy graphProxy,
 			IFormsOfControlRepository formsOfControlRepository) : base(graphProxy)
 		{
-			_formsOfControlRepository = formsOfControlRepository;
+			this.formsOfControlRepository = formsOfControlRepository;
 		}
 
 
 		protected override string EntityName => "Subject";
 
-		public RepositoryModifyResult<Subject> Create(Subject entity)
+		public int Create(Subject entity)
 		{
-			return new RepositoryModifyResult<Subject>(entity);
+			return 111;
 		}
 
-		public RepositoryModifyResult<Subject> Update(int id, Subject entity)
+		public void Update(int id, Subject entity)
 		{
-			return new RepositoryModifyResult<Subject>(entity);
 		}
 
 		public List<Subject> GetAll(SubjectFilter filter)
@@ -103,7 +102,7 @@
 		{
 			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm", GraphProxy.Graph);
 
-			return formsOfControl.Select(f => _formsOfControlRepository.GetById(f.GetId())).ToList();
+			return formsOfControl.Select(f => formsOfControlRepository.GetById(f.GetId())).ToList();
 		}
 	}
 }

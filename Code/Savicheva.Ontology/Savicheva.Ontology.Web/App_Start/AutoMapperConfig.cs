@@ -1,5 +1,6 @@
 ﻿namespace Savicheva.Ontology.Web
 {
+	using System.Linq;
 	using AutoMapper;
 	using Entities;
 	using Models;
@@ -10,7 +11,9 @@
 		{
 			Mapper.Initialize(cfg =>
 			{
-				cfg.CreateMap<SubjectModel, Subject>().ReverseMap();
+				cfg.CreateMap<Subject, SubjectModel>();
+				cfg.CreateMap<SubjectModel.UpdateData, Subject>()
+					.ForMember(s => s.FormsOfControl, s => s.MapFrom(c => c.FormsOfControl.Select(d => new FormOfControl {Id = d})));
 				cfg.CreateMap<AccountModel, Account>().ReverseMap();
 			});
 		}

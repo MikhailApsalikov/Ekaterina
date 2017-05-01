@@ -32,7 +32,6 @@
 			{
 				return HandleException(e);
 			}
-
 		}
 
 		[HttpGet]
@@ -40,7 +39,7 @@
 		{
 			try
 			{
-				List<SubjectModel> list = _repository.GetAll(filter).Select(MapEntityToShortModel).OrderBy(s => s.Id).ToList();
+				List<SubjectModel> list = _repository.GetAll(filter).Select(MapEntityToModel).OrderBy(s => s.Id).ToList();
 				var content = new EntitiesListResult<SubjectModel>
 				{
 					Data = list,
@@ -54,6 +53,36 @@
 			catch (Exception e)
 			{
 				return HandleException(e);
+			}
+		}
+
+		[HttpPost]
+		public virtual IHttpActionResult Post([FromBody]SubjectModel.UpdateData value)
+		{
+			try
+			{
+				return Ok(new RepositoryModifyResult<Subject>(new Subject()
+				{
+					Id = _repository.Create(MapModelToEntity(value))
+				}));
+			}
+			catch (Exception ex)
+			{
+				return this.HandleException(ex);
+			}
+		}
+
+		[HttpPut]
+		public virtual IHttpActionResult Put(int id, [FromBody]SubjectModel.UpdateData value)
+		{
+			try
+			{
+				_repository.Update(id, MapModelToEntity(value));
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return this.HandleException(ex);
 			}
 		}
 
@@ -76,14 +105,9 @@
 			return Mapper.Map<SubjectModel>(entity);
 		}
 
-		private Subject MapModelToEntity(SubjectModel model)
+		private Subject MapModelToEntity(SubjectModel.UpdateData model)
 		{
 			return Mapper.Map<Subject>(model);
-		}
-
-		private SubjectModel MapEntityToShortModel(Subject entity)
-		{
-			return Mapper.Map<SubjectModel>(entity);
 		}
 
 		private IHttpActionResult HandleException(Exception e)
