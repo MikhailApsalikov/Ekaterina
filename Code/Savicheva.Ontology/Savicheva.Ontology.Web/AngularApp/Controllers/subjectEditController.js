@@ -46,10 +46,9 @@
 		};
 
 		$scope.save = function () {
-			if ($scope.subject && $scope.subject.FormsOfControl && $scope.subject.FormsOfControl.length) {
-				$scope.subject.FormsOfControl = _.map($scope.subject.FormsOfControl, function (foc) {
-					return +foc;
-				});
+			if (!$scope.subject.Title) {
+				messageService.error("Введите название дисциплины");
+				return;
 			}
 
 			if ($scope.getId()) {
