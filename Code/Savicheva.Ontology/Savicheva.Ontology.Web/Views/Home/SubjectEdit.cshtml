@@ -24,9 +24,18 @@
 			<div class="property form-group">
 				<div class="property-name">Форма контроля</div>
 				<div class="property-value">
-					<select class="form-control select-picker-foc" ng-model="subject.FormsOfControl" multiple>
-						<option ng-repeat="fc in formsOfControl" value="{{fc.id}}" >{{fc.name}}</option>
-					</select>
+					<div>
+						<label>
+							<input type="checkbox" ng-model="focs.test"/>
+							Зачет
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" ng-model="focs.exam"/>
+							Экзамен
+						</label>
+					</div>
 				</div>
 			</div>
 			<div class="property form-group">
