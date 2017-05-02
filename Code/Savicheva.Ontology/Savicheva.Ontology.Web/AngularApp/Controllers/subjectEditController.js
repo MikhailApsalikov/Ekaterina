@@ -37,8 +37,8 @@
 						for (var i = 0; i < data.FormsOfControl.length; i++) {
 							data.FormsOfControl[i] = data.FormsOfControl[i].Id + "";
 						}
-						$('.select-picker-foc').selectpicker('val', data.FormsOfControl);
 					}
+					$('.select-picker-foc').selectpicker('val', data.FormsOfControl);
 
 					$scope.subject = data;
 				});
