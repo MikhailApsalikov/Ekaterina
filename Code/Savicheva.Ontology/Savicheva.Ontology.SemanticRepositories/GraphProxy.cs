@@ -46,7 +46,6 @@
 				.Select(n => n.GetId())
 				.Max() + 1;
 			return id ?? 1;
-
 		}
 	}
 }
