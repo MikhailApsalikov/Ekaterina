@@ -6,7 +6,7 @@
 
 	public interface IModuleRepository
 	{
-		Module GetById(string id);
+		IdTitle GetById(string id);
 		IEnumerable<UriNode> GetAllNodes();
 	}
 }

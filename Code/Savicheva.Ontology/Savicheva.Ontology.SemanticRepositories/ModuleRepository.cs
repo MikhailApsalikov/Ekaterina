@@ -12,23 +12,23 @@ namespace Savicheva.Ontology.SemanticRepositories
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
-	public class ModuleRepository : SemanticRepositoryBase<Module>, IModuleRepository
+	public class ModuleRepository : SemanticRepositoryBase<IdTitle>, IModuleRepository
 	{
 		public ModuleRepository(IGraphProxy graphProxy) : base(graphProxy)
 		{
 		}
 
 		protected override string EntityName => "Module";
-		protected override Module Map(OntologyResource instance)
+		protected override IdTitle Map(OntologyResource instance)
 		{
-			return new Module
+			return new IdTitle
 			{
 				Id = instance.GetId(),
 				Title = instance.GetStringProperty("title")
 			};
 		}
 
-		protected override void SetProperties(Module entity, Individual instance)
+		protected override void SetProperties(IdTitle entity, Individual instance)
 		{
 			throw new NotSupportedException();
 		}

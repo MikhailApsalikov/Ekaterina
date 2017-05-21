@@ -13,8 +13,8 @@
 			{
 				cfg.CreateMap<Subject, SubjectModel>();
 				cfg.CreateMap<SubjectModel.UpdateData, Subject>()
-					.ForMember(s => s.FormsOfControl, s => s.MapFrom(c => c.FormsOfControl.Select(d => new FormOfControl {Id = d})))
-					.ForMember(s => s.Modules, s => s.MapFrom(c => c.Modules.Select(d => new Module { Id = d })));
+					.ForMember(s => s.FormsOfControl, s => s.MapFrom(c => c.FormsOfControl.Select(d => new IdTitle { Id = d})))
+					.ForMember(s => s.Modules, s => s.MapFrom(c => c.Modules.Select(d => new IdTitle { Id = d })));
 				cfg.CreateMap<AccountModel, Account>().ReverseMap();
 			});
 		}

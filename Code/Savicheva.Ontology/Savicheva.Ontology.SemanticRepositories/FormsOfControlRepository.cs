@@ -9,7 +9,7 @@
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
-	public class FormsOfControlRepository : SemanticRepositoryBase<FormOfControl>, IFormsOfControlRepository
+	public class FormsOfControlRepository : SemanticRepositoryBase<IdTitle>, IFormsOfControlRepository
 	{
 		public FormsOfControlRepository(IGraphProxy graphProxy) : base(graphProxy)
 		{
@@ -17,16 +17,16 @@
 
 		protected override string EntityName => "FormOfControl";
 
-		protected override FormOfControl Map(OntologyResource instance)
+		protected override IdTitle Map(OntologyResource instance)
 		{
-			return new FormOfControl
+			return new IdTitle
 			{
 				Id = instance.GetId(),
 				Title = instance.GetStringProperty("title")
 			};
 		}
 
-		protected override void SetProperties(FormOfControl entity, Individual instance)
+		protected override void SetProperties(IdTitle entity, Individual instance)
 		{
 			throw new NotSupportedException();
 		}

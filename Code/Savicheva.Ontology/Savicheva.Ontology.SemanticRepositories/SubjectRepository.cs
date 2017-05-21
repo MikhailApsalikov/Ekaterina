@@ -84,26 +84,26 @@
 			instance.SetSubjectsByObjectProperty("includesSubject", ModulesToUriNodes(entity.Modules));
 		}
 
-		private List<UriNode> ModulesToUriNodes(List<Module> modules)
+		private List<UriNode> ModulesToUriNodes(List<IdTitle> modules)
 		{
 			Dictionary<string, UriNode> moduleNodes = moduleRepository.GetAllNodes().ToDictionary(s => s.GetId());
 			return modules.Select(s => moduleNodes[s.Id]).ToList();
 		}
 
-		private List<UriNode> FormOfControlToUriNodes(List<FormOfControl> focs)
+		private List<UriNode> FormOfControlToUriNodes(List<IdTitle> focs)
 		{
 			Dictionary<string, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes().ToDictionary(s => s.GetId());
 			return focs.Select(s => formsOfControlNodes[s.Id]).ToList();
 		}
 
-		private List<FormOfControl> MapFormOfControl(OntologyResource instance)
+		private List<IdTitle> MapFormOfControl(OntologyResource instance)
 		{
 			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm");
 
 			return formsOfControl.Select(f => formsOfControlRepository.GetById(f.GetId())).ToList();
 		}
 
-		private List<Module> MapModules(OntologyResource instance)
+		private List<IdTitle> MapModules(OntologyResource instance)
 		{
 			List<OntologyResource> result = instance.GetSubjectsByObjectProperty("includesSubject");
 			return result.Select(f => moduleRepository.GetById(f.GetId())).ToList();

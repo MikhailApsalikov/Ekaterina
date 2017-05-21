@@ -17,8 +17,8 @@
 
 		public int? HasHourForInd { get; set; }
 
-		public List<FormOfControl> FormsOfControl { get; set; }
-		public List<Module> Modules { get; set; }
+		public List<IdTitle> FormsOfControl { get; set; }
+		public List<IdTitle> Modules { get; set; }
 		public string Id { get; set; }
 	}
 }
