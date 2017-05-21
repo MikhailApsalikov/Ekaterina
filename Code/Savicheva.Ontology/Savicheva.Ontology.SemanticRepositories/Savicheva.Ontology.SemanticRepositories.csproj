@@ -76,6 +76,7 @@
     <Compile Include="FormsOfControlRepository.cs" />
     <Compile Include="GraphProxy.cs" />
     <Compile Include="Helpers\SemanticHelpers.cs" />
+    <Compile Include="ModuleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticRepositoryBase.cs" />
     <Compile Include="SubjectRepository.cs" />

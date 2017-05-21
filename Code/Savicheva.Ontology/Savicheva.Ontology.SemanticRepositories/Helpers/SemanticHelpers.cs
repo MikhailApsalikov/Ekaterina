@@ -44,7 +44,7 @@
 				.Select(s => (resource.Graph as OntologyGraph).CreateOntologyResource(s))
 				.ToList();
 		}
-
+		
 		public static void SetIntProperty(this OntologyResource resource, string propertyName, int? value)
 		{
 			resource.SetProperty(propertyName, value.HasValue ? resource.Graph.CreateLiteralNode(value.ToString()) : null);
@@ -58,6 +58,17 @@
 		public static void SetObjectProperties(this OntologyResource resource, string propertyName, List<UriNode> nodes)
 		{
 			resource.SetProperties(propertyName, nodes?.Cast<INode>().ToList() ?? new List<INode>());
+		}
+
+		public static void SetSubjectsByObjectProperty(this OntologyResource resource, string propertyName, List<UriNode> values)
+		{
+			resource.RemovePropertyByObject(propertyName);
+			OntologyProperty property = ((OntologyGraph)resource.Graph).OwlProperties.FirstOrDefault(s => s.Resource.ToString().EndsWith(propertyName));
+			if (values != null && values.Any() && property != null)
+			{
+				IEnumerable<Triple> triples = values.Select(v => new Triple(v, property.Resource, resource.Resource, resource.Graph));
+				resource.Graph.Assert(triples);
+			}
 		}
 
 		// Common
@@ -98,6 +109,11 @@
 		public static void RemoveProperty(this OntologyResource resource, string propertyName)
 		{
 			resource.Graph.Retract(resource.TriplesWithSubject.Where(s => s.Predicate.ToString().EndsWith(propertyName)).ToList());
+		}
+
+		public static void RemovePropertyByObject(this OntologyResource resource, string propertyName)
+		{
+			resource.Graph.Retract(resource.TriplesWithObject.Where(s => s.Predicate.ToString().EndsWith(propertyName)).ToList());
 		}
 
 		public static string GetId(this OntologyResource resource)

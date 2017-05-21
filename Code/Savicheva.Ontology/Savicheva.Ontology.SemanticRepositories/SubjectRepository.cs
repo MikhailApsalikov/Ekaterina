@@ -11,11 +11,13 @@
 	public class SubjectRepository : SemanticRepositoryBase<Subject>, ISubjectRepository
 	{
 		private readonly IFormsOfControlRepository formsOfControlRepository;
+		private readonly IModuleRepository moduleRepository;
 
 		public SubjectRepository(IGraphProxy graphProxy,
-			IFormsOfControlRepository formsOfControlRepository) : base(graphProxy)
+			IFormsOfControlRepository formsOfControlRepository, IModuleRepository moduleRepository) : base(graphProxy)
 		{
 			this.formsOfControlRepository = formsOfControlRepository;
+			this.moduleRepository = moduleRepository;
 		}
 
 		protected override string EntityName => "Subject";
@@ -79,6 +81,13 @@
 			instance.SetIntProperty("hasHourForLecture", entity.HasHourForLecture);
 			instance.SetIntProperty("hasHourForPract", entity.HasHourForPract);
 			instance.SetObjectProperties("hasForm", FormOfControlToUriNodes(entity.FormsOfControl));
+			instance.SetSubjectsByObjectProperty("includesSubject", ModulesToUriNodes(entity.Modules));
+		}
+
+		private List<UriNode> ModulesToUriNodes(List<Module> modules)
+		{
+			Dictionary<string, UriNode> moduleNodes = moduleRepository.GetAllNodes().ToDictionary(s => s.GetId());
+			return modules.Select(s => moduleNodes[s.Id]).ToList();
 		}
 
 		private List<UriNode> FormOfControlToUriNodes(List<FormOfControl> focs)
@@ -97,11 +106,7 @@
 		private List<Module> MapModules(OntologyResource instance)
 		{
 			List<OntologyResource> result = instance.GetSubjectsByObjectProperty("includesSubject");
-			return result.Select(f => new Module()
-			{
-				Id = f.GetId(),
-				Title = f.GetStringProperty("title")
-			}).ToList();
+			return result.Select(f => moduleRepository.GetById(f.GetId())).ToList();
 		}
 	}
 }

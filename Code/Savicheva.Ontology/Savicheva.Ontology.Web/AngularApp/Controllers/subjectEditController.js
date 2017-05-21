@@ -8,6 +8,7 @@
 
 	function subjectEditController($scope, service, loginService, messageService) {
 		$scope.focs = {};
+		$scope.modules = {};
 		$scope.subject = {};
 		$scope.userRole = loginService.roles[loginService.getUserInfo().Role];
 		$scope.isPageVisible = function() {
@@ -37,6 +38,17 @@
 							});
 					}
 
+					if (data && data.Modules && data.Modules.length) {
+						$scope.modules.first = !!_.find(data.Modules,
+							function (item) {
+								return item.Id === "http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#301";
+							});
+						$scope.modules.second = !!_.find(data.Modules,
+							function (item) {
+								return item.Id === "http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#302";
+							});
+					}
+
 					$scope.subject = data;
 				});
 			}
@@ -53,12 +65,25 @@
 				return;
 			}
 
+			if (!$scope.modules.first && !$scope.modules.second) {
+				messageService.error("Дисциплина должна проходить хотя бы в одном семестре");
+				return;
+			}
+
 			$scope.subject.FormsOfControl = [];
 			if ($scope.focs.test) {
 				$scope.subject.FormsOfControl.push("http://localhost:3030/25");
 			}
 			if ($scope.focs.exam) {
 				$scope.subject.FormsOfControl.push("http://localhost:3030/228");
+			}
+
+			$scope.subject.Modules = [];
+			if ($scope.modules.first) {
+				$scope.subject.Modules.push("http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#301");
+			}
+			if ($scope.modules.second) {
+				$scope.subject.Modules.push("http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#302");
 			}
 
 			if ($scope.getId()) {

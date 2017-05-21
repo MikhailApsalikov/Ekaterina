@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAccountRepository.cs" />
+    <Compile Include="IModuleRepository.cs" />
     <Compile Include="IFormsOfControlRepository.cs" />
     <Compile Include="IGraphProxy.cs" />
     <Compile Include="ISubjectRepository.cs" />

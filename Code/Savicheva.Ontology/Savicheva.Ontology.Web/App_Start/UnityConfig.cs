@@ -27,6 +27,7 @@
 			container.RegisterType<IAccountRepository, AccountRepository>(efConstructorParameter);
 			container.RegisterType<ISubjectRepository, SubjectRepository>();
 			container.RegisterType<IFormsOfControlRepository, FormsOfControlRepository>();
+			container.RegisterType<IModuleRepository, ModuleRepository>();
 			
 			container.RegisterType<GraphProxy>(new ContainerControlledLifetimeManager());
 			container.RegisterType<IGraphProxy, GraphProxy>();
