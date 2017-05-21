@@ -68,6 +68,18 @@
 						id: id
 					}
 				});
+			},
+			uploadFile: function (file, url) {
+				var fd = new FormData();
+				fd.append("file", file);
+
+				return $http.post(url, fd, {
+					withCredentials: true,
+					headers: {
+						'Content-Type': undefined
+					},
+					transformRequest: angular.identity
+				});
 			}
 		};
 	}

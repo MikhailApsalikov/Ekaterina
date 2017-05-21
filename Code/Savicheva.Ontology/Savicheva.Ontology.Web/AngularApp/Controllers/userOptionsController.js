@@ -19,6 +19,11 @@
 		};
 
 		$scope.logout = loginService.logout;
+
+		$scope.isExpert = function () {
+			return $scope.role === roles[1];
+		};
+
 		$scope.isAdmin = function() {
 			return $scope.role === roles[2];
 		};

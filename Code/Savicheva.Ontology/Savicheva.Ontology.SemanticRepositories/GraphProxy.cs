@@ -1,11 +1,14 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
+	using System.IO;
 	using System.Linq;
+	using System.Text;
 	using System.Web.Hosting;
 	using Helpers;
 	using Interfaces;
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
+	using VDS.RDF.Parsing;
 
 	public class GraphProxy : IGraphProxy
 	{
@@ -22,6 +25,18 @@
 			{
 				Graph = new OntologyGraph();
 				Graph.LoadFromFile(HostingEnvironment.MapPath(OntologyPath));
+			}
+		}
+
+		public int AddTripplesFromStream(Stream stream)
+		{
+			using (var reader = new StreamReader(stream, Encoding.UTF8))
+			{
+				IGraph graph = new Graph();
+				graph.LoadFromString(reader.ReadToEnd(), new RdfXmlParser());
+				Graph.Assert(graph.Triples);
+				SaveChanges();
+				return graph.Triples.Count;
 			}
 		}
 

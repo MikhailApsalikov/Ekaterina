@@ -38,5 +38,10 @@
 		{
 			return View();
 		}
+
+		public ViewResult Upload()
+		{
+			return View();
+		}
 	}
 }

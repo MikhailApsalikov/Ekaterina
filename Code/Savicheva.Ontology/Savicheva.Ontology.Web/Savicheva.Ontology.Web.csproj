@@ -188,6 +188,7 @@
     <Content Include="AngularApp\Controllers\loginController.js" />
     <Content Include="AngularApp\Controllers\subjectEditController.js" />
     <Content Include="AngularApp\Controllers\subjectListController.js" />
+    <Content Include="AngularApp\Controllers\uploadController.js" />
     <Content Include="AngularApp\Controllers\userCreateController.js" />
     <Content Include="AngularApp\Controllers\userManagementController.js" />
     <Content Include="AngularApp\Controllers\userOptionsController.js" />
@@ -205,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
+    <Compile Include="ApiControllers\RdfController.cs" />
     <Compile Include="ApiControllers\SubjectController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -229,7 +231,10 @@
     <Content Include="Views\Home\Departments.cshtml" />
     <Content Include="Views\Home\Department.cshtml" />
     <Content Include="Views\Home\SubjectEdit.cshtml" />
-    <Content Include="App_Data\Ontology.owl" />
+    <Content Include="App_Data\Ontology.owl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
