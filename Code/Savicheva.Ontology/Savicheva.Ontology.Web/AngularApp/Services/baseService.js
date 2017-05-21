@@ -17,6 +17,13 @@
 				});
 			},
 			getById: function (controllerName, id) {
+				if (!id) {
+					try {
+						id = /\#id=(.*)/.exec(window.location.hash)[1];
+					} catch (e) {
+					}
+				}
+
 				return $http({
 					url: window.baseUri + "api/" + controllerName,
 					method: "GET",

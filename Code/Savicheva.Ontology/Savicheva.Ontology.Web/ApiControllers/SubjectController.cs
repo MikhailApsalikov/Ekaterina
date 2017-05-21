@@ -22,7 +22,7 @@
 		}
 
 		[HttpGet]
-		public IHttpActionResult Get(int id)
+		public IHttpActionResult Get(string id)
 		{
 			try
 			{
@@ -73,7 +73,7 @@
 		}
 
 		[HttpPut]
-		public virtual IHttpActionResult Put(int id, [FromBody]SubjectModel.UpdateData value)
+		public virtual IHttpActionResult Put(string id, [FromBody]SubjectModel.UpdateData value)
 		{
 			try
 			{
@@ -87,7 +87,7 @@
 		}
 
 		[HttpDelete]
-		public virtual IHttpActionResult Delete(int id)
+		public virtual IHttpActionResult Delete(string id)
 		{
 			try
 			{

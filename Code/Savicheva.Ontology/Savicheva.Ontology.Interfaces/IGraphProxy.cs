@@ -9,6 +9,6 @@
 		void LoadGraph();
 		void SaveChanges();
 		int AddTripplesFromStream(Stream stream);
-		int GenerateId();
+		string GenerateId();
 	}
 }

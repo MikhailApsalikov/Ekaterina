@@ -6,7 +6,7 @@
 
 	public interface IFormsOfControlRepository
 	{
-		FormOfControl GetById(int id);
+		FormOfControl GetById(string id);
 		IEnumerable<UriNode> GetAllNodes();
 	}
 }

@@ -35,6 +35,16 @@
 			return resource.GetProperties(propertyName).Cast<UriNode>().ToList();
 		}
 
+		public static List<OntologyResource> GetSubjectsByObjectProperty(this OntologyResource resource, string propertyName)
+		{
+			List<Triple> triples = resource.TriplesWithObject.Where(s => s.Predicate.ToString().EndsWith(propertyName))
+				.ToList();
+			return triples.Select(t => t.Subject)
+				.Cast<UriNode>()
+				.Select(s => (resource.Graph as OntologyGraph).CreateOntologyResource(s))
+				.ToList();
+		}
+
 		public static void SetIntProperty(this OntologyResource resource, string propertyName, int? value)
 		{
 			resource.SetProperty(propertyName, value.HasValue ? resource.Graph.CreateLiteralNode(value.ToString()) : null);
@@ -90,13 +100,19 @@
 			resource.Graph.Retract(resource.TriplesWithSubject.Where(s => s.Predicate.ToString().EndsWith(propertyName)).ToList());
 		}
 
-		public static int GetId(this OntologyResource resource)
+		public static string GetId(this OntologyResource resource)
 		{
 			var node = resource.Resource as UriNode;
 			return GetId(node);
 		}
 
-		public static int GetId(this UriNode uriNode)
+		public static string GetId(this UriNode uriNode)
+		{
+			// ReSharper disable once PossibleNullReferenceException
+			return uriNode.Uri.ToString();
+		}
+
+		public static int GetIntId(this UriNode uriNode)
 		{
 			// ReSharper disable once PossibleNullReferenceException
 			return int.Parse(uriNode.Uri.Segments.Last());

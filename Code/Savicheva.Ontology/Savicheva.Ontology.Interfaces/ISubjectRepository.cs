@@ -6,9 +6,9 @@
 	public interface ISubjectRepository
 	{
 		List<Subject> GetAll(SubjectFilter filter);
-		Subject GetById(int id);
-		void Remove(int id);
-		int Create(Subject entity);
-		void Update(int id, Subject entity);
+		Subject GetById(string id);
+		void Remove(string id);
+		string Create(Subject entity);
+		void Update(string id, Subject entity);
 	}
 }

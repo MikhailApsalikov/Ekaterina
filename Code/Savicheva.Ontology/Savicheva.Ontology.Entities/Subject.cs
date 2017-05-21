@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 	using Selp.Interfaces;
 
-	public class Subject : ISelpEntity<int>
+	public class Subject : ISelpEntity<string>
 	{
 		public string Title { get; set; }
 
@@ -18,6 +18,7 @@
 		public int? HasHourForInd { get; set; }
 
 		public List<FormOfControl> FormsOfControl { get; set; }
-		public int Id { get; set; }
+		public List<Module> Modules { get; set; }
+		public string Id { get; set; }
 	}
 }

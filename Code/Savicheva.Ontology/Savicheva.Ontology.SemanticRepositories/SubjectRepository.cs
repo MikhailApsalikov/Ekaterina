@@ -18,7 +18,6 @@
 			this.formsOfControlRepository = formsOfControlRepository;
 		}
 
-
 		protected override string EntityName => "Subject";
 
 		public List<Subject> GetAll(SubjectFilter filter)
@@ -30,8 +29,8 @@
 			if (!string.IsNullOrEmpty(filter.Title))
 				result = result.Where(s => s.Title.Contains(filter.Title));
 
-			if (filter.FormsOfControl.HasValue)
-				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl.Value));
+			if (!string.IsNullOrEmpty(filter.FormsOfControl))
+				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl));
 
 			if (filter.HasHourForInd.HasValue)
 				result = result.Where(s => s.HasHourForInd == filter.HasHourForInd.Value);
@@ -65,7 +64,8 @@
 				HasHourForPract = instance.GetIntProperty("hasHourForPract"),
 				Title = instance.GetStringProperty("title"),
 				Id = instance.GetId(),
-				FormsOfControl = MapFormOfControl(instance)
+				FormsOfControl = MapFormOfControl(instance),
+				Modules = MapModules(instance),
 			};
 			return result;
 		}
@@ -83,7 +83,7 @@
 
 		private List<UriNode> FormOfControlToUriNodes(List<FormOfControl> focs)
 		{
-			Dictionary<int, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes().ToDictionary(s => s.GetId());
+			Dictionary<string, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes().ToDictionary(s => s.GetId());
 			return focs.Select(s => formsOfControlNodes[s.Id]).ToList();
 		}
 
@@ -92,6 +92,16 @@
 			List<UriNode> formsOfControl = instance.GetObjectProperties("hasForm");
 
 			return formsOfControl.Select(f => formsOfControlRepository.GetById(f.GetId())).ToList();
+		}
+
+		private List<Module> MapModules(OntologyResource instance)
+		{
+			List<OntologyResource> result = instance.GetSubjectsByObjectProperty("includesSubject");
+			return result.Select(f => new Module()
+			{
+				Id = f.GetId(),
+				Title = f.GetStringProperty("title")
+			}).ToList();
 		}
 	}
 }

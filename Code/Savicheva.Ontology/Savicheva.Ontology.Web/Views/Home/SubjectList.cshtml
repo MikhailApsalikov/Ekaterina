@@ -12,7 +12,7 @@
 }
 
 <div ng-controller="subjectListController">
-	<a class="btn btn-default pull-right" href="~/SubjectEdit/0">Новая дисциплина</a>
+	<a class="btn btn-default pull-right" href="~/SubjectEdit/">Новая дисциплина</a>
 	<h1>Список дисциплин</h1>
 	<div class="filters">
 		<div class="filter form-group">
@@ -89,6 +89,9 @@
 				<th>
 					Форма контроля
 				</th>
+				<th>
+					Семестр
+				</th>
 				<th ng-if="canEdit()"></th>
 			</tr>
 		</thead>
@@ -103,8 +106,9 @@
 				<th ng-bind="subject.HasHourForKoll"></th>
 				<th ng-bind="subject.HasHourForInd"></th>
 				<th ng-bind="formatFormsOfControl(subject.FormsOfControl)"></th>
+				<th ng-bind="formatModules(subject.Modules)"></th>
 				<th class="actions" ng-if="canEdit()">
-					<a class="btn btn-default" ng-href="/SubjectEdit/{{subject.Id}}">Редактировать</a>
+					<a class="btn btn-default" ng-href="/SubjectEdit#id={{subject.Id}}">Редактировать</a>
 					<button class="btn btn-danger" ng-click="remove(subject.Id)">Удалить</button>
 				</th>
 			</tr>

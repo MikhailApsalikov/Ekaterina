@@ -3,7 +3,7 @@
 	public class SubjectFilter
 	{
 		public string Title { get; set; }
-		public int? FormsOfControl { get; set; }
+		public string FormsOfControl { get; set; }
 		public int? HasHourForPract { get; set; }
 		public int? HasHourForLecture { get; set; }
 		public int? HasHourForLab { get; set; }

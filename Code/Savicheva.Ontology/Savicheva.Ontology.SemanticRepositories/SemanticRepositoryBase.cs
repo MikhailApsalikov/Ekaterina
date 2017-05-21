@@ -10,7 +10,7 @@
 	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
-	public abstract class SemanticRepositoryBase<TEntity> where TEntity : ISelpEntity<int>
+	public abstract class SemanticRepositoryBase<TEntity> where TEntity : ISelpEntity<string>
 	{
 		private const string NamedIndividual = @"http://www.w3.org/2002/07/owl#NamedIndividual";
 
@@ -30,12 +30,12 @@
 			return ontClass.Instances.Select(Map).ToList();
 		}
 
-		public virtual TEntity GetById(int id)
+		public virtual TEntity GetById(string id)
 		{
 			return GetAll().FirstOrDefault(s => s.Id == id);
 		}
 
-		public int Create(TEntity entity)
+		public string Create(TEntity entity)
 		{
 			var id = GraphProxy.GenerateId();
 			CreateNew(id);
@@ -43,14 +43,14 @@
 			return id;
 		}
 
-		public void Update(int id, TEntity entity)
+		public void Update(string id, TEntity entity)
 		{
 			Individual individual = GraphProxy.Graph.CreateIndividual(new Uri(new Uri(SemanticRepositories.GraphProxy.IndividualsDomain), id.ToString()));
 			SetProperties(entity, individual);
 			GraphProxy.SaveChanges();
 		}
 
-		public virtual void Remove(int id)
+		public virtual void Remove(string id)
 		{
 			OntologyResource instance = GetClass(EntityName).Instances.FirstOrDefault(s => s.GetId() == id);
 			if (instance == null)
@@ -64,9 +64,9 @@
 			return GraphProxy.Graph.OwlClasses.FirstOrDefault(c => c.Resource.ToString().Contains(name));
 		}
 
-		protected void CreateNew(int id)
+		protected void CreateNew(string id)
 		{
-			IUriNode newUri = GraphProxy.Graph.CreateUriNode(new Uri(new Uri(SemanticRepositories.GraphProxy.IndividualsDomain), id.ToString()));
+			IUriNode newUri = GraphProxy.Graph.CreateUriNode(new Uri(id));
 			INode type = GraphProxy.Graph.CreateUriNode(new Uri(OntologyHelper.PropertyType));
 			INode namedInvididualClass = GraphProxy.Graph.CreateUriNode(new Uri(NamedIndividual));
 			OntologyClass ontologyClass = GetClass(EntityName);

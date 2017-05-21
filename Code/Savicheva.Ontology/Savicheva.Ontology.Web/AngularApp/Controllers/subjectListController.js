@@ -26,11 +26,11 @@
 				name: "---------------"
 			},
 			{
-				id: 25,
+				id: "http://localhost:3030/25",
 				name: "Зачет"
 			},
 			{
-				id: 228,
+				id: "http://localhost:3030/228",
 				name: "Экзамен"
 			}
 		];
@@ -39,6 +39,15 @@
 			service.getList("subject", $scope.filters).then(function(data) {
 				$scope.subjects = data.Data;
 			});
+		};
+
+		$scope.formatModules = function (modules) {
+			var names = [];
+			angular.forEach(modules, function (module) {
+				names.push(module.Title);
+			});
+
+			return names.join(", ");
 		};
 
 		$scope.formatFormsOfControl = function(focs) {

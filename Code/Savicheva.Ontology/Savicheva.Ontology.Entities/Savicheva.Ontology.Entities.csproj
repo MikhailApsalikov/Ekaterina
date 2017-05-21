@@ -68,6 +68,7 @@
     <Compile Include="FormOfControl.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Module.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Enums\AccountRole.cs" />
     <Compile Include="Profile.cs" />

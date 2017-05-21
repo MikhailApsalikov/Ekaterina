@@ -2,9 +2,9 @@
 {
 	using Selp.Interfaces;
 	
-	public class FormOfControl : ISelpEntity<int>
+	public class FormOfControl : ISelpEntity<string>
 	{
 		public string Title { get; set; }
-		public int Id { get; set; }
+		public string Id { get; set; }
 	}
 }

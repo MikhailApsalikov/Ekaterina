@@ -48,19 +48,23 @@
 			}
 		}
 
-		public int GenerateId()
+		public string GenerateId()
 		{
+			int result;
 			if (id.HasValue)
 			{
-				id = id + 1;
-				return id.Value;
+				result = id.Value + 1;
+			}
+			else
+			{
+				result = Graph.Nodes.Where(n => n is UriNode && n.ToString().Contains(IndividualsDomain))
+					     .Cast<UriNode>()
+					     .Select(n => n.GetIntId())
+					     .Max() + 1;
 			}
 
-			id = Graph.Nodes.Where(n => n is UriNode && n.ToString().Contains(IndividualsDomain))
-				.Cast<UriNode>()
-				.Select(n => n.GetId())
-				.Max() + 1;
-			return id ?? 1;
+			
+			return IndividualsDomain + '/' + result;
 		}
 	}
 }

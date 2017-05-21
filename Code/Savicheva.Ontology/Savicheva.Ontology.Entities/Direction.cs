@@ -3,9 +3,9 @@
 	using Selp.Interfaces;
 
 	// Направление подготовки
-	public class Direction : ISelpEntity<int>
+	public class Direction : ISelpEntity<string>
 	{
 		public string Title { get; set; }
-		public int Id { get; set; }
+		public string Id { get; set; }
 	}
 }

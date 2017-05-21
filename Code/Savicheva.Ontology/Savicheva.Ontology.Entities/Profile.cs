@@ -3,9 +3,9 @@
 	using Selp.Interfaces;
 
 	// профиль
-	public class Profile : ISelpEntity<int>
+	public class Profile : ISelpEntity<string>
 	{
 		public string Title { get; set; }
-		public int Id { get; set; }
+		public string Id { get; set; }
 	}
 }

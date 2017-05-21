@@ -18,8 +18,10 @@
 			if ($scope.id) {
 				return $scope.id;
 			}
-			var url = window.location.href.split("/");
-			return +url[url.length - 1];
+			try {
+				return /\#id=(.*)/.exec(window.location.hash)[1];
+			} catch (e) {
+			}
 		};
 		$scope.reload = function() {
 			if ($scope.getId()) {
@@ -27,11 +29,11 @@
 					if (data && data.FormsOfControl && data.FormsOfControl.length) {
 						$scope.focs.test = !!_.find(data.FormsOfControl,
 							function(item) {
-								return item.Id === 25;
+								return item.Id === "http://localhost:3030/25";
 							});
 						$scope.focs.exam = !!_.find(data.FormsOfControl,
 							function(item) {
-								return item.Id === 228;
+								return item.Id === "http://localhost:3030/228";
 							});
 					}
 
@@ -53,10 +55,10 @@
 
 			$scope.subject.FormsOfControl = [];
 			if ($scope.focs.test) {
-				$scope.subject.FormsOfControl.push(25);
+				$scope.subject.FormsOfControl.push("http://localhost:3030/25");
 			}
 			if ($scope.focs.exam) {
-				$scope.subject.FormsOfControl.push(228);
+				$scope.subject.FormsOfControl.push("http://localhost:3030/228");
 			}
 
 			if ($scope.getId()) {
