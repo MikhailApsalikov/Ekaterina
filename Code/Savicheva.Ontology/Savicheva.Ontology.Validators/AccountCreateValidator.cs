@@ -6,8 +6,8 @@
 
 	public class AccountCreateValidator : AccountValidator
 	{
-		private IAccountRepository accountRepository;
-		private Account entity;
+		private readonly IAccountRepository accountRepository;
+		private readonly Account entity;
 
 		public AccountCreateValidator(Account entity, IAccountRepository accountRepository) : base(entity)
 		{

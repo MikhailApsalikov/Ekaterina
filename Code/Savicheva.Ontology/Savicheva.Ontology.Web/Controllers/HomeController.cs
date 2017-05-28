@@ -9,22 +9,17 @@
 			return View();
 		}
 
-		public ViewResult SubjectView()
-		{
-			return View();
-		}
-
 		public ViewResult SubjectEdit()
 		{
 			return View();
 		}
 
-		public ViewResult Departments()
+		public ViewResult StudyProgrammes()
 		{
 			return View();
 		}
 
-		public ViewResult Department()
+		public ViewResult StudyProgramme()
 		{
 			return View();
 		}

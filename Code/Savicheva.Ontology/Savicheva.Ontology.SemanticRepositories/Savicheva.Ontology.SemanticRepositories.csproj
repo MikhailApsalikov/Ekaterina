@@ -79,6 +79,7 @@
     <Compile Include="ModuleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticRepositoryBase.cs" />
+    <Compile Include="StudyProgrammeRepository.cs" />
     <Compile Include="SubjectRepository.cs" />
   </ItemGroup>
   <ItemGroup>

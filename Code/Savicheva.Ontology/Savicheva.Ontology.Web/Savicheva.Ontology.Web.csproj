@@ -207,6 +207,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
     <Compile Include="ApiControllers\RdfController.cs" />
+    <Compile Include="ApiControllers\StudyProgrammeController.cs" />
     <Compile Include="ApiControllers\SubjectController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -228,8 +229,8 @@
     <Content Include="Views\Home\SubjectList.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\UserManagement.cshtml" />
-    <Content Include="Views\Home\Departments.cshtml" />
-    <Content Include="Views\Home\Department.cshtml" />
+    <Content Include="Views\Home\StudyProgrammes.cshtml" />
+    <Content Include="Views\Home\StudyProgramme.cshtml" />
     <Content Include="Views\Home\SubjectEdit.cshtml" />
     <Content Include="App_Data\Ontology.owl">
       <SubType>Designer</SubType>

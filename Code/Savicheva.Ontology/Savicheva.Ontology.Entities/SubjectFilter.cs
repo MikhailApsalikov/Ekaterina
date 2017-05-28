@@ -1,13 +1,9 @@
 ﻿namespace Savicheva.Ontology.Entities
 {
-	public class SubjectFilter
+	public class StudyProgrammeFilter
 	{
 		public string Title { get; set; }
-		public string FormsOfControl { get; set; }
-		public int? HasHourForPract { get; set; }
-		public int? HasHourForLecture { get; set; }
-		public int? HasHourForLab { get; set; }
-		public int? HasHourForKoll { get; set; }
-		public int? HasHourForInd { get; set; }
+		public string Direction { get; set; }
+		public string Department { get; set; }
 	}
 }
