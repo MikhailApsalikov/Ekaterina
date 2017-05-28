@@ -102,11 +102,14 @@
 			if (isStudyProgrammeRequired)
 			{
 				IdTitle studyProgramme = MapIdTitle(instance.GetSubjectsByObjectProperty("hasSubject").FirstOrDefault()?.GetId());
-				result.StudyProgramme = new StudyProgramme()
+				if (studyProgramme != null)
 				{
-					Id = studyProgramme.Id,
-					Title = studyProgramme.Title
-				};
+					result.StudyProgramme = new StudyProgramme()
+					{
+						Id = studyProgramme.Id,
+						Title = studyProgramme.Title
+					};
+				}
 			}
 
 			return result;
