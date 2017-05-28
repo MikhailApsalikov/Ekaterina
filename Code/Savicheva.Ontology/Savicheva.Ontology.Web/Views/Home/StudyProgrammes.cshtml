@@ -4,11 +4,80 @@
 }
 
 @section css{
-
+	<link href="~/Content/study-programmes.css" rel="stylesheet" />
 }
 
 @section scripts{
-
+	<script src="~/AngularApp/Controllers/studyProgrammesController.js"></script>
 }
 
-<h1>Страница находится в разработке!</h1>
+<div ng-controller="studyProgrammesController">
+	<a class="btn btn-default pull-right" href="~/StudyProgramme/">Новый учебный план</a>
+	<h1>Список учебных планов</h1>
+	<div class="filters">
+		<div class="filter form-group">
+			<div class="filter-name">Название</div>
+			<div class="filter-value">
+				<input type="text" class="form-control" ng-model="filters.Title"/>
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Выпускающая кафедра</div>
+			<div class="filter-value">
+				<input type="text" class="form-control" ng-model="filters.Department" />
+			</div>
+		</div>
+		<div class="filter form-group">
+			<div class="filter-name">Направление</div>
+			<div class="filter-value">
+				<input type="text" class="form-control" ng-model="filters.Direction" />
+			</div>
+		</div>
+		<button class="btn btn-primary filters-submit" ng-click="reload()">Применить фильтры</button>
+	</div>
+
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+		<tr>
+			<th>
+				#
+			</th>
+			<th>
+				Название
+			</th>
+			<th>
+				Выпускающая кафедра
+			</th>
+			<th>
+				Профиль
+			</th>
+			<th>
+				Направление подготовки
+			</th>
+			<th>
+				Дисциплины
+			</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="item in data track by $index">
+			<th ng-bind="item.Id"></th>
+			<th ng-bind="item.Title"></th>
+			<th ng-bind="item.Department.Title"></th>
+			<th ng-bind="item.Profile.Title"></th>
+			<th ng-bind="item.Direction.Title"></th>
+			<th>
+				<div ng-repeat="subject in item.Subjects track by $index">
+					<a ng-if="canEdit()" ng-href="/SubjectEdit#id={{subject.Id}}" ng-bind="subject.Title"></a>
+					<div ng-if="!canEdit()" ng-bind="subject.Title"></div>
+				</div>
+			</th>
+			<th class="actions">
+				<a class="btn btn-default" ng-href="/StudyProgramme#id={{item.Id}}" ng-bind="canEdit()?'Редактировать':'Просмотр'" ></a>
+				<button class="btn btn-danger" ng-if="canEdit()" ng-click="remove(item.Id)">Удалить</button>
+			</th>
+		</tr>
+		</tbody>
+	</table>
+</div>

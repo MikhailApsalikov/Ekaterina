@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Web.UI.WebControls;
+	using Entities;
 	using Helpers;
 	using Interfaces;
 	using Selp.Interfaces;
@@ -72,6 +73,28 @@
 			OntologyClass ontologyClass = GetClass(EntityName);
 			GraphProxy.Graph.Assert(new Triple(newUri, type, ontologyClass.Resource, GraphProxy.Graph));
 			GraphProxy.Graph.Assert(new Triple(newUri, type, namedInvididualClass, GraphProxy.Graph));
+		}
+
+		protected IdTitle MapIdTitle(string id)
+		{
+			if (string.IsNullOrEmpty(id))
+			{
+				return null;
+			}
+			return MapIdTitle(GraphProxy.Graph.CreateOntologyResource(new Uri(id)));
+		}
+
+		protected IdTitle MapIdTitle(OntologyResource instance)
+		{
+			if (instance == null)
+			{
+				return null;
+			}
+			return new IdTitle
+			{
+				Id = instance.GetId(),
+				Title = instance.GetStringProperty("title")
+			};
 		}
 
 		protected abstract TEntity Map(OntologyResource instance);

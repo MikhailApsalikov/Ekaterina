@@ -20,6 +20,7 @@
 		public List<IdTitle> FormsOfControl { get; set; }
 		public List<IdTitle> Modules { get; set; }
 		public string Id { get; set; }
+		public IdTitle StudyProgramme { get; set; }
 
 		public class UpdateData
 		{

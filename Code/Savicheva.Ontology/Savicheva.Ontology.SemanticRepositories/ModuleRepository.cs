@@ -21,11 +21,7 @@ namespace Savicheva.Ontology.SemanticRepositories
 		protected override string EntityName => "Module";
 		protected override IdTitle Map(OntologyResource instance)
 		{
-			return new IdTitle
-			{
-				Id = instance.GetId(),
-				Title = instance.GetStringProperty("title")
-			};
+			return MapIdTitle(instance);
 		}
 
 		protected override void SetProperties(IdTitle entity, Individual instance)

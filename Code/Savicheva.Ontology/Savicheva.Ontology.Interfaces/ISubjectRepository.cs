@@ -7,6 +7,7 @@
 	{
 		List<Subject> GetAll(SubjectFilter filter);
 		Subject GetById(string id);
+		Subject GetShortById(string id);
 		void Remove(string id);
 		string Create(Subject entity);
 		void Update(string id, Subject entity);

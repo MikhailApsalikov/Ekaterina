@@ -1,5 +1,6 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using Entities;
@@ -26,36 +27,65 @@
 		{
 			IEnumerable<Subject> result = base.GetAll();
 			if (filter == null)
+			{
 				return result.ToList();
+			}
 
 			if (!string.IsNullOrEmpty(filter.Title))
+			{
 				result = result.Where(s => s.Title.Contains(filter.Title));
+			}
 
 			if (!string.IsNullOrEmpty(filter.FormsOfControl))
+			{
 				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl));
+			}
 
 			if (filter.HasHourForInd.HasValue)
+			{
 				result = result.Where(s => s.HasHourForInd == filter.HasHourForInd.Value);
+			}
 
 			if (filter.HasHourForLecture.HasValue)
+			{
 				result = result.Where(s => s.HasHourForLecture == filter.HasHourForLecture.Value);
+			}
 
 			if (filter.HasHourForKoll.HasValue)
+			{
 				result = result.Where(s => s.HasHourForKoll == filter.HasHourForKoll.Value);
+			}
 
 			if (filter.HasHourForLecture.HasValue)
+			{
 				result = result.Where(s => s.HasHourForLecture == filter.HasHourForLecture.Value);
+			}
 
 			if (filter.HasHourForLab.HasValue)
+			{
 				result = result.Where(s => s.HasHourForLab == filter.HasHourForLab.Value);
+			}
 
 			if (filter.HasHourForPract.HasValue)
+			{
 				result = result.Where(s => s.HasHourForPract == filter.HasHourForPract.Value);
+			}
 
 			return result.ToList();
 		}
 
+		public Subject GetShortById(string id)
+		{
+			OntologyResource instance = GraphProxy.Graph.CreateOntologyResource(new Uri(id));
+			return Map(instance, false);
+		}
+
 		protected override Subject Map(OntologyResource instance)
+		{
+			return Map(instance, true);
+		}
+
+		private Subject Map(OntologyResource instance, bool isStudyProgrammeRequired)
 		{
 			var result = new Subject
 			{
@@ -67,8 +97,18 @@
 				Title = instance.GetStringProperty("title"),
 				Id = instance.GetId(),
 				FormsOfControl = MapFormOfControl(instance),
-				Modules = MapModules(instance),
+				Modules = MapModules(instance)
 			};
+			if (isStudyProgrammeRequired)
+			{
+				IdTitle studyProgramme = MapIdTitle(instance.GetSubjectsByObjectProperty("hasSubject").FirstOrDefault()?.GetId());
+				result.StudyProgramme = new StudyProgramme()
+				{
+					Id = studyProgramme.Id,
+					Title = studyProgramme.Title
+				};
+			}
+
 			return result;
 		}
 
@@ -92,7 +132,8 @@
 
 		private List<UriNode> FormOfControlToUriNodes(List<IdTitle> focs)
 		{
-			Dictionary<string, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes().ToDictionary(s => s.GetId());
+			Dictionary<string, UriNode> formsOfControlNodes = formsOfControlRepository.GetAllNodes()
+				.ToDictionary(s => s.GetId());
 			return focs.Select(s => formsOfControlNodes[s.Id]).ToList();
 		}
 

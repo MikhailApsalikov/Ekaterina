@@ -5,8 +5,6 @@
 
 	public class StudyProgramme : ISelpEntity<string>
 	{
-		public string Title { get; set; }
-
 		//hasNapr
 		public IdTitle Direction { get; set; }
 
@@ -19,6 +17,7 @@
 		//hasSubject
 		public List<Subject> Subjects { get; set; }
 
+		public string Title { get; set; }
 		public string Id { get; set; }
 	}
 }
