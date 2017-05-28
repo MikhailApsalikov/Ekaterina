@@ -44,15 +44,15 @@
 
 			if (!string.IsNullOrEmpty(filter.Title))
 			{
-				result = result.Where(s => s.Title.Contains(filter.Title));
+				result = result.Where(s => s.Title.ToUpperInvariant().Contains(filter.Title.ToUpperInvariant()));
 			}
 			if (!string.IsNullOrEmpty(filter.Department))
 			{
-				result = result.Where(s => s.Department?.Title.Contains(filter.Department) ?? false);
+				result = result.Where(s => s.Department?.Title?.ToUpperInvariant().Contains(filter.Department.ToUpperInvariant()) ?? false);
 			}
 			if (!string.IsNullOrEmpty(filter.Direction))
 			{
-				result = result.Where(s => s.Direction?.Title.Contains(filter.Direction) ?? false);
+				result = result.Where(s => s.Direction?.Title?.ToUpperInvariant().Contains(filter.Direction.ToUpperInvariant()) ?? false);
 			}
 			return result.ToList();
 		}

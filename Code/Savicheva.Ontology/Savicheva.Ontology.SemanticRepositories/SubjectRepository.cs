@@ -33,7 +33,7 @@
 
 			if (!string.IsNullOrEmpty(filter.Title))
 			{
-				result = result.Where(s => s.Title.Contains(filter.Title));
+				result = result.Where(s => s.Title.ToUpperInvariant().Contains(filter.Title.ToUpperInvariant()));
 			}
 
 			if (!string.IsNullOrEmpty(filter.FormsOfControl))
