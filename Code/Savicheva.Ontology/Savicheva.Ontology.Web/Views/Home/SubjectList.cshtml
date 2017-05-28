@@ -30,6 +30,12 @@
 			</div>
 		</div>
 		<div class="filter form-group">
+			<div class="filter-name">Учебный план</div>
+			<div class="filter-value">
+				<input type="text" class="form-control" ng-model="filters.StudyProgramme" />
+			</div>
+		</div>
+		<div class="filter form-group">
 			<div class="filter-name">Часы для проведения практических занятий</div>
 			<div class="filter-value">
 				<input type="number" class="form-control" ng-model="filters.HasHourForPract" />
@@ -72,6 +78,9 @@
 					Название
 				</th>
 				<th>
+					Учебный план
+				</th>
+				<th>
 					Часы для проведения практических занятий
 				</th>
 				<th>
@@ -99,6 +108,9 @@
 			<tr ng-repeat="subject in subjects track by $index">
 				<th ng-bind="subject.Id"></th>
 				<th ng-bind="subject.Title"></th>
+				<th>
+					<a ng-href="/StudyProgramme#id={{subject.StudyProgramme.Id}}" ng-bind="subject.StudyProgramme.Title"></a>
+				</th>
 
 				<th ng-bind="subject.HasHourForPract"></th>
 				<th ng-bind="subject.HasHourForLecture"></th>

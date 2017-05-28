@@ -41,6 +41,11 @@
 				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl));
 			}
 
+			if (!string.IsNullOrEmpty(filter.StudyProgramme))
+			{
+				result = result.Where(s => s.StudyProgramme?.Title?.ToUpperInvariant().Contains(filter.StudyProgramme.ToUpperInvariant()) ?? false);
+			}
+
 			if (filter.HasHourForInd.HasValue)
 			{
 				result = result.Where(s => s.HasHourForInd == filter.HasHourForInd.Value);

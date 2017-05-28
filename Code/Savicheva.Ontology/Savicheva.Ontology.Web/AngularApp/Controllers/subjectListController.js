@@ -14,6 +14,7 @@
 		$scope.filters = {
 			Title: "",
 			FormsOfControl: null,
+			StudyProgramme: "",
 			HasHourForPract: null,
 			HasHourForLecture: null,
 			HasHourForLab: null,
