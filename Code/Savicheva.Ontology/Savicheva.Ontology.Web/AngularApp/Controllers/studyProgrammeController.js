@@ -10,7 +10,7 @@
 		$scope.directions = [];
 		$scope.departments = [];
 		$scope.profiles = [];
-		$scope.data = [];
+		$scope.data = {};
 		$scope.userRole = loginService.roles[loginService.getUserInfo().Role];
 		$scope.isEditable = function() {
 			return $scope.userRole !== loginService.roles[0];
