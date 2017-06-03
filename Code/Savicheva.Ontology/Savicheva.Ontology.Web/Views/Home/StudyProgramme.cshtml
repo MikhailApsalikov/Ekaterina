@@ -4,13 +4,128 @@
 }
 
 @section css{
-
+	<link href="~/Content/study-programme.css" rel="stylesheet" />
 }
 
 @section scripts{
-
+<script src="~/AngularApp/Controllers/studyProgrammeController.js"></script>
 }
 
+<div ng-controller="studyProgrammeController">
+	<div ng-if="isEditable()">
+		<h1 ng-if="getId()">Редактирование дисциплины URL: {{getId()}}</h1>
+		<h1 ng-if="!getId()">Создание новой дисциплины</h1>
+		<div class="edit-area">
+			<div class="property form-group">
+				<div class="property-name">Название</div>
+				<div class="property-value">
+					<input type="text" class="form-control" ng-model="data.Title" />
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Форма контроля</div>
+				<div class="property-value">
+					<div>
+						<label>
+							<input type="checkbox" ng-model="focs.test" />
+							Зачет
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" ng-model="focs.exam" />
+							Экзамен
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Семестр</div>
+				<div class="property-value">
+					<div>
+						<label>
+							<input type="checkbox" ng-model="modules.first" />
+							1 семестр
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" ng-model="modules.second" />
+							2 семестр
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Часы для проведения практических занятий</div>
+				<div class="property-value">
+					<input type="number" class="form-control" ng-model="data.HasHourForPract" />
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Часы для проведения лекций</div>
+				<div class="property-value">
+					<input type="number" class="form-control" ng-model="data.HasHourForLecture" />
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Часы для проведения лабораторных работ</div>
+				<div class="property-value">
+					<input type="number" class="form-control" ng-model="data.HasHourForLab" />
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Часы для проведения коллоквиумов</div>
+				<div class="property-value">
+					<input type="number" class="form-control" ng-model="data.HasHourForKoll" />
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Часы для самостоятельной работы студентов</div>
+				<div class="property-value">
+					<input type="number" class="form-control" ng-model="data.HasHourForInd" />
+				</div>
+			</div>
+			<button class="btn btn-primary btn-save" ng-click="save()">Сохранить</button>
+		</div>
 
 
-<h1>Страница находится в разработке!</h1>
+	</div>
+	<div ng-if="!isEditable()">
+		<h1>Дисциплина URL: {{getId()}}</h1>
+		<div class="edit-area">
+			<div class="property form-group">
+				<div class="property-name">Название</div>
+				<div class="property-value">
+					<span ng-bind="data.Title"></span>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Выпускающая кафедра</div>
+				<div class="property-value">
+					<span ng-bind="data.Department.Title"></span>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Профиль</div>
+				<div class="property-value">
+					<span ng-bind="data.Profile.Title"></span>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Направление подготовки</div>
+				<div class="property-value">
+					<span ng-bind="data.Direction.Title"></span>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Дисциплины</div>
+				<div class="property-value">
+					<div ng-repeat="subject in data.Subjects track by $index">
+						<div ng-bind="subject.Title"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

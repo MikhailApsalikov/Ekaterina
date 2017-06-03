@@ -1,0 +1,31 @@
+﻿.edit-area {
+	margin: 30px auto 15px;
+	width: 900px;
+}
+
+.property {
+	margin-right: 25px;
+}
+
+.property-name {
+	font-weight: bold;
+	display: inline-block;
+	width: 325px;
+	text-align: right;
+	margin-right: 30px;
+	vertical-align: top;
+}
+
+	.property-name:after {
+		content: ":";
+	}
+
+.property-value {
+	display: inline-block;
+	width: 500px;
+}
+
+.btn-save {
+	height: 33px;
+	margin-left: 364px;
+}
