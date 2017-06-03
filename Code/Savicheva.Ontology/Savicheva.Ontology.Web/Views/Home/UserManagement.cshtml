@@ -39,7 +39,7 @@
 					<th ng-bind="userRoleString(account.Role)"></th>
 					<th class="actions">
 						<button class="btn btn-default" ng-if="account.Role !== 2" ng-click="toRole(account, 2)">Сделать администратором</button>
-						<button class="btn btn-default" ng-if="account.Role !== 1" ng-click="toRole(account, 1)">Сделать администратор учебного процесса</button>
+						<button class="btn btn-default" ng-if="account.Role !== 1" ng-click="toRole(account, 1)">Сделать администратором учебного процесса</button>
 						<button class="btn btn-default" ng-if="account.Role !== 0" ng-click="toRole(account, 0)">Сделать пользователем</button>
 						<button class="btn btn-danger" ng-click="remove(account.Id)">Удалить</button>
 					</th>
