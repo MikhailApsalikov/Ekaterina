@@ -8,7 +8,7 @@
 	function userOptionsController($scope, loginService) {
 		var roles = [
 			'Пользователь',
-			'Эксперт',
+			'Администратор учебного процесса',
 			'Администратор'
 		];
 
