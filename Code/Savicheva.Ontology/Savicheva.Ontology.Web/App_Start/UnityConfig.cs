@@ -29,6 +29,9 @@
 			container.RegisterType<IFormsOfControlRepository, FormsOfControlRepository>();
 			container.RegisterType<IModuleRepository, ModuleRepository>();
 			container.RegisterType<IStudyProgrammeRepository, StudyProgrammeRepository>();
+			container.RegisterType<IDepartmentRepository, DepartmentRepository>();
+			container.RegisterType<IProfileRepository, ProfileRepository>();
+			container.RegisterType<IDirectionRepository, DirectionRepository>();
 
 			container.RegisterType<GraphProxy>(new ContainerControlledLifetimeManager());
 			container.RegisterType<IGraphProxy, GraphProxy>();

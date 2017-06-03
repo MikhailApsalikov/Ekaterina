@@ -22,13 +22,13 @@
 	    {
 			public string Title { get; set; }
 			
-			public string DirectionId { get; set; }
+			public string Direction { get; set; }
 			
-			public string DepartmentId { get; set; }
+			public string Department { get; set; }
 			
-			public string ProfileId { get; set; }
+			public string Profile { get; set; }
 
-		    public List<string> SubjectIds { get; set; }
+		    public List<string> Subjects { get; set; }
 
 			public string Id { get; set; }
 		}

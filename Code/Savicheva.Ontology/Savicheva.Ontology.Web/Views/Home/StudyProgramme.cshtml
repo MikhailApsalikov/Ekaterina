@@ -23,67 +23,38 @@
 				</div>
 			</div>
 			<div class="property form-group">
-				<div class="property-name">Форма контроля</div>
+				<div class="property-name">Выпускающая кафедра</div>
 				<div class="property-value">
-					<div>
-						<label>
-							<input type="checkbox" ng-model="focs.test" />
-							Зачет
-						</label>
+					<select class="form-control" ng-model="data.Department">
+						<option value=""> ---------------------- </option>
+						<option ng-repeat="item in departments" value="{{item.Id}}">{{item.Title}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Профиль</div>
+				<div class="property-value">
+					<select class="form-control" ng-model="data.Profile">
+						<option value=""> ---------------------- </option>
+						<option ng-repeat="item in profiles" value="{{item.Id}}">{{item.Title}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Направление подготовки</div>
+				<div class="property-value">
+					<select class="form-control" ng-model="data.Direction">
+						<option value=""> ---------------------- </option>
+						<option ng-repeat="item in directions" value="{{item.Id}}">{{item.Title}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="property form-group">
+				<div class="property-name">Дисциплины</div>
+				<div class="property-value">
+					<div ng-repeat="subject in data.Subjects track by $index">
+						<div ng-bind="subject.Title"></div>
 					</div>
-					<div>
-						<label>
-							<input type="checkbox" ng-model="focs.exam" />
-							Экзамен
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Семестр</div>
-				<div class="property-value">
-					<div>
-						<label>
-							<input type="checkbox" ng-model="modules.first" />
-							1 семестр
-						</label>
-					</div>
-					<div>
-						<label>
-							<input type="checkbox" ng-model="modules.second" />
-							2 семестр
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Часы для проведения практических занятий</div>
-				<div class="property-value">
-					<input type="number" class="form-control" ng-model="data.HasHourForPract" />
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Часы для проведения лекций</div>
-				<div class="property-value">
-					<input type="number" class="form-control" ng-model="data.HasHourForLecture" />
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Часы для проведения лабораторных работ</div>
-				<div class="property-value">
-					<input type="number" class="form-control" ng-model="data.HasHourForLab" />
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Часы для проведения коллоквиумов</div>
-				<div class="property-value">
-					<input type="number" class="form-control" ng-model="data.HasHourForKoll" />
-				</div>
-			</div>
-			<div class="property form-group">
-				<div class="property-name">Часы для самостоятельной работы студентов</div>
-				<div class="property-value">
-					<input type="number" class="form-control" ng-model="data.HasHourForInd" />
 				</div>
 			</div>
 			<button class="btn btn-primary btn-save" ng-click="save()">Сохранить</button>

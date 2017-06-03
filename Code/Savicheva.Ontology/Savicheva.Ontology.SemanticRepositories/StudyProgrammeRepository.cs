@@ -1,10 +1,12 @@
 ﻿namespace Savicheva.Ontology.SemanticRepositories
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using Entities;
 	using Helpers;
 	using Interfaces;
+	using VDS.RDF;
 	using VDS.RDF.Ontology;
 
 	public class StudyProgrammeRepository : SemanticRepositoryBase<StudyProgramme>, IStudyProgrammeRepository
@@ -32,6 +34,43 @@
 
 		protected override void SetProperties(StudyProgramme entity, Individual instance)
 		{
+			instance.SetStringProperty("title", entity.Title);
+			if (entity.Department.Id != null)
+			{
+				instance.SetObjectProperties("hasDepartment", new List<IUriNode>
+					{
+						GraphProxy.Graph.GetUriNode(new Uri(entity.Department.Id))
+					}.Cast<UriNode>()
+					.ToList());
+			}
+			else
+			{
+				instance.SetObjectProperties("hasDepartment", null);
+			}
+			if (entity.Profile.Id != null)
+			{
+				instance.SetObjectProperties("hasProfile", new List<IUriNode>
+					{
+						GraphProxy.Graph.GetUriNode(new Uri(entity.Profile.Id))
+					}.Cast<UriNode>()
+					.ToList());
+			}
+			else
+			{
+				instance.SetObjectProperties("hasProfile", null);
+			}
+			if (entity.Direction.Id != null)
+			{
+				instance.SetObjectProperties("hasNapr", new List<IUriNode>
+					{
+						GraphProxy.Graph.GetUriNode(new Uri(entity.Direction.Id))
+					}.Cast<UriNode>()
+					.ToList());
+			}
+			else
+			{
+				instance.SetObjectProperties("hasNapr", null);
+			}
 		}
 
 		public List<StudyProgramme> GetAll(StudyProgrammeFilter filter)

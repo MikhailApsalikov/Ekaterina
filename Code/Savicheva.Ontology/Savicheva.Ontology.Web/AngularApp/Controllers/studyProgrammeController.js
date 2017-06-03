@@ -28,7 +28,16 @@
 
 		$scope.reload = function() {
 			if ($scope.getId()) {
-				service.getById("studyProgramme", $scope.getId()).then(function(data) {
+				service.getById("studyProgramme", $scope.getId()).then(function (data) {
+					if (data.Department) {
+						data.Department = data.Department.Id;
+					}
+					if (data.Direction) {
+						data.Direction = data.Direction.Id;
+					}
+					if (data.Profile) {
+						data.Profile = data.Profile.Id;
+					}
 					$scope.data = data;
 				});
 			}
@@ -36,13 +45,13 @@
 
 		$scope.loadSelectData = function () {
 			service.getById("direction").then(function (data) {
-				$scope.directions = data;
+				$scope.directions = data.Data;
 			});
-			service.getById("departments").then(function (data) {
-				$scope.departments = data;
+			service.getById("department").then(function (data) {
+				$scope.departments = data.Data;
 			});
-			service.getById("profiles").then(function (data) {
-				$scope.profiles = data;
+			service.getById("profile").then(function (data) {
+				$scope.profiles = data.Data;
 			});
 		};
 

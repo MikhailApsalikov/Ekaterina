@@ -18,10 +18,10 @@
 				cfg.CreateMap<StudyProgramme, StudyProgrammeModel>();
 				cfg.CreateMap<StudyProgramme, IdTitle>();
 				cfg.CreateMap<StudyProgrammeModel.UpdateData, StudyProgramme>()
-					.ForMember(s => s.Subjects, s => s.MapFrom(c => c.SubjectIds.Select(d => new Subject { Id = d })))
-					.ForMember(s => s.Department, s => s.MapFrom(d => new IdTitle { Id = d.DepartmentId }))
-					.ForMember(s => s.Direction, s => s.MapFrom(d => new IdTitle { Id = d.DirectionId }))
-					.ForMember(s => s.Profile, s => s.MapFrom(d => new IdTitle { Id = d.ProfileId }));
+					.ForMember(s => s.Subjects, s => s.MapFrom(c => c.Subjects.Select(d => new Subject { Id = d })))
+					.ForMember(s => s.Department, s => s.MapFrom(d => new IdTitle { Id = d.Department }))
+					.ForMember(s => s.Direction, s => s.MapFrom(d => new IdTitle { Id = d.Direction }))
+					.ForMember(s => s.Profile, s => s.MapFrom(d => new IdTitle { Id = d.Profile }));
 				cfg.CreateMap<AccountModel, Account>().ReverseMap();
 			});
 		}

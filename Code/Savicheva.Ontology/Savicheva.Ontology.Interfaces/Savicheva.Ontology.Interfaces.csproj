@@ -73,9 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAccountRepository.cs" />
+    <Compile Include="IDepartmentRepository.cs" />
+    <Compile Include="IDirectionRepository.cs" />
     <Compile Include="IModuleRepository.cs" />
     <Compile Include="IFormsOfControlRepository.cs" />
     <Compile Include="IGraphProxy.cs" />
+    <Compile Include="IProfileRepository.cs" />
     <Compile Include="IStudyProgrammeRepository.cs" />
     <Compile Include="ISubjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
