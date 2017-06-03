@@ -35,7 +35,7 @@
 		protected override void SetProperties(StudyProgramme entity, Individual instance)
 		{
 			instance.SetStringProperty("title", entity.Title);
-			if (entity.Department.Id != null)
+			if (!string.IsNullOrEmpty(entity.Department.Id))
 			{
 				instance.SetObjectProperties("hasDepartment", new List<IUriNode>
 					{
@@ -47,7 +47,7 @@
 			{
 				instance.SetObjectProperties("hasDepartment", null);
 			}
-			if (entity.Profile.Id != null)
+			if (!string.IsNullOrEmpty(entity.Profile.Id))
 			{
 				instance.SetObjectProperties("hasProfile", new List<IUriNode>
 					{
@@ -59,7 +59,7 @@
 			{
 				instance.SetObjectProperties("hasProfile", null);
 			}
-			if (entity.Direction.Id != null)
+			if (!string.IsNullOrEmpty(entity.Direction.Id))
 			{
 				instance.SetObjectProperties("hasNapr", new List<IUriNode>
 					{
@@ -71,6 +71,7 @@
 			{
 				instance.SetObjectProperties("hasNapr", null);
 			}
+			instance.SetObjectProperties("hasSubject", entity.Subjects.Select(s=> GraphProxy.Graph.GetUriNode(new Uri(s.Id))).Cast<UriNode>().ToList());
 		}
 
 		public List<StudyProgramme> GetAll(StudyProgrammeFilter filter)

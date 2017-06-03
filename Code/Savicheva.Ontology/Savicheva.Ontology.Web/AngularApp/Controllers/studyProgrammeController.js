@@ -10,6 +10,7 @@
 		$scope.directions = [];
 		$scope.departments = [];
 		$scope.profiles = [];
+		$scope.subjects = [];
 		$scope.data = {};
 		$scope.userRole = loginService.roles[loginService.getUserInfo().Role];
 		$scope.isEditable = function() {
@@ -38,21 +39,38 @@
 					if (data.Profile) {
 						data.Profile = data.Profile.Id;
 					}
+					_.each(data.Subjects, function(subject) {
+						var subjectInList = _.find($scope.subjects, function(sin) {
+							return sin.Id === subject.Id;
+						});
+						if (subjectInList) {
+							subjectInList.isSelected = true;
+						}
+					});
 					$scope.data = data;
 				});
 			}
 		};
 
 		$scope.loadSelectData = function () {
-			service.getById("direction").then(function (data) {
+			var promises = [];
+			promises[0] = service.getList("direction").then(function (data) {
 				$scope.directions = data.Data;
+				return true;
 			});
-			service.getById("department").then(function (data) {
+			promises[1] = service.getList("department").then(function (data) {
 				$scope.departments = data.Data;
+				return true;
 			});
-			service.getById("profile").then(function (data) {
+			promises[2] = service.getList("profile").then(function (data) {
 				$scope.profiles = data.Data;
+				return true;
 			});
+			promises[3] = service.getList("subject").then(function (data) {
+				$scope.subjects = data.Data;
+				return true;
+			});
+			return window.Promise.all(promises);
 		};
 
 		$scope.save = function() {
@@ -60,6 +78,12 @@
 				messageService.error("Введите название учебного плана");
 				return;
 			}
+
+			$scope.data.Subjects = _.map(_.filter($scope.subjects,
+					function(subject) {
+						return subject.isSelected;
+					}),
+				"Id");
 
 			if ($scope.getId()) {
 				service.update("studyProgramme", $scope.getId(), $scope.data).then(function() {
@@ -75,10 +99,12 @@
 
 		function activate() {
 			if ($scope.isEditable()) {
-				$scope.loadSelectData();
+				$scope.loadSelectData().then(function() {
+					$scope.reload();
+				});
+			} else {
+				$scope.reload();
 			}
-			
-			$scope.reload();
 		}
 
 		activate();

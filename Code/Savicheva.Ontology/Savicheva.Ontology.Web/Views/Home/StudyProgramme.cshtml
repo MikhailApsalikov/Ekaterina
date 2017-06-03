@@ -52,8 +52,11 @@
 			<div class="property form-group">
 				<div class="property-name">Дисциплины</div>
 				<div class="property-value">
-					<div ng-repeat="subject in data.Subjects track by $index">
-						<div ng-bind="subject.Title"></div>
+					<div ng-repeat="item in subjects">
+						<label>
+							<input type="checkbox" ng-model="item.isSelected" />
+							<span ng-bind="item.Title"></span>
+						</label>
 					</div>
 				</div>
 			</div>
