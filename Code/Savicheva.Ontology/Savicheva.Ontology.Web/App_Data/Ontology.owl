@@ -12,14 +12,14 @@
 ]>
 <rdf:RDF xml:base="http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#" xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#" xmlns:untitled-ontology-170="http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <untitled-ontology-170:Subject rdf:about="http://localhost:3030/1">
+    <dc:title>Администрирование информационных систем</dc:title>
     <untitled-ontology-170:hasForm rdf:resource="http://localhost:3030/25" />
-    <untitled-ontology-170:hasHourForInd rdf:datatype="&xsd;int">72.0</untitled-ontology-170:hasHourForInd>
-    <untitled-ontology-170:hasHourForKoll rdf:datatype="&xsd;int">0.0</untitled-ontology-170:hasHourForKoll>
-    <untitled-ontology-170:hasHourForLab rdf:datatype="&xsd;int">0.0</untitled-ontology-170:hasHourForLab>
-    <untitled-ontology-170:hasHourForLecture rdf:datatype="&xsd;int">36.0</untitled-ontology-170:hasHourForLecture>
-    <untitled-ontology-170:hasHourForPract rdf:datatype="&xsd;int">36.0</untitled-ontology-170:hasHourForPract>
+    <untitled-ontology-170:hasHourForInd>72</untitled-ontology-170:hasHourForInd>
+    <untitled-ontology-170:hasHourForKoll>0</untitled-ontology-170:hasHourForKoll>
+    <untitled-ontology-170:hasHourForLab>0</untitled-ontology-170:hasHourForLab>
+    <untitled-ontology-170:hasHourForLecture>36</untitled-ontology-170:hasHourForLecture>
+    <untitled-ontology-170:hasHourForPract>36</untitled-ontology-170:hasHourForPract>
     <rdf:type rdf:resource="&owl;Thing" />
-    <foaf:title>Администрирование информационных систем</foaf:title>
   </untitled-ontology-170:Subject>
   <untitled-ontology-170:Subject rdf:about="http://localhost:3030/10">
     <untitled-ontology-170:hasForm rdf:resource="http://localhost:3030/228" />
@@ -2518,6 +2518,7 @@
     <foaf:title>Выпускающая кафедра</foaf:title>
   </owl:Class>
   <untitled-ontology-170:StudyProgramme rdf:about="&untitled-ontology-170;IFST">
+    <dc:title>Информационные системы и технологии</dc:title>
     <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/121" />
     <untitled-ontology-170:hasNapr rdf:resource="http://localhost:3030/44" />
     <untitled-ontology-170:hasProfile rdf:resource="http://localhost:3030/44" />
@@ -2546,6 +2547,7 @@
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/12" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/123" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/124" />
+    <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/126" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/127" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/128" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/129" />
@@ -2555,6 +2557,7 @@
     <foaf:title>Информационные системы и технологии</foaf:title>
   </untitled-ontology-170:StudyProgramme>
   <untitled-ontology-170:StudyProgramme rdf:about="&untitled-ontology-170;IVCHT">
+    <dc:title>Информатика и вычислительная техника</dc:title>
     <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/53" />
     <untitled-ontology-170:hasNapr rdf:resource="http://localhost:3030/39" />
     <untitled-ontology-170:hasProfile rdf:resource="http://localhost:3030/164" />
@@ -2581,6 +2584,7 @@
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/42" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/43" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/45" />
+    <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/46" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/47" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/48" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/49" />
@@ -2614,7 +2618,9 @@
     <foaf:title>Направление подготовки</foaf:title>
   </owl:Class>
   <untitled-ontology-170:StudyProgramme rdf:about="&untitled-ontology-170;PINF">
+    <dc:title>Прикладная информатика</dc:title>
     <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/119" />
+    <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/121" />
     <untitled-ontology-170:hasNapr rdf:resource="http://localhost:3030/125" />
     <untitled-ontology-170:hasProfile rdf:resource="http://localhost:3030/125" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/131" />
@@ -2649,6 +2655,7 @@
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/161" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/162" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/163" />
+    <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/164" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/165" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/166" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/167" />
@@ -2660,7 +2667,9 @@
     <foaf:title>Прикладная информатика</foaf:title>
   </untitled-ontology-170:StudyProgramme>
   <untitled-ontology-170:StudyProgramme rdf:about="&untitled-ontology-170;PINFm">
+    <dc:title>Прикладная информатика (магистры)</dc:title>
     <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/119" />
+    <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/121" />
     <untitled-ontology-170:hasNapr rdf:resource="http://localhost:3030/125" />
     <untitled-ontology-170:hasProfile rdf:resource="http://localhost:3030/125" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/70" />
@@ -2698,6 +2707,7 @@
     <foaf:title>Прикладная информатика (магистры)</foaf:title>
   </untitled-ontology-170:StudyProgramme>
   <owl:Thing rdf:about="&untitled-ontology-170;PING">
+    <dc:title>Программная инженерия</dc:title>
     <untitled-ontology-170:hasDepartment rdf:resource="http://localhost:3030/53" />
     <untitled-ontology-170:hasNapr rdf:resource="http://localhost:3030/135" />
     <untitled-ontology-170:hasProfile rdf:resource="http://localhost:3030/44" />
@@ -2749,6 +2759,7 @@
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/212" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/213" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/214" />
+    <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/215" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/216" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/219" />
     <untitled-ontology-170:hasSubject rdf:resource="http://localhost:3030/22" />

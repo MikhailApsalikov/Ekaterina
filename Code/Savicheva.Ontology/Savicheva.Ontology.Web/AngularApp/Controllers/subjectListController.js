@@ -36,6 +36,21 @@
 			}
 		];
 
+		$scope.modules = [
+			{
+				id: null,
+				name: "---------------"
+			},
+			{
+				id: "http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#301",
+				name: "1 семестр"
+			},
+			{
+				id: "http://www.semanticweb.org/12/ontologies/2016/10/untitled-ontology-170#302",
+				name: "2 семестр"
+			}
+		];
+
 		$scope.reload = function() {
 			service.getList("subject", $scope.filters).then(function(data) {
 				$scope.subjects = data.Data;

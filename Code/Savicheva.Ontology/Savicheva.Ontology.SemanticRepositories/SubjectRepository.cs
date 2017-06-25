@@ -41,6 +41,11 @@
 				result = result.Where(s => s.FormsOfControl.Any(f => f.Id == filter.FormsOfControl));
 			}
 
+			if (!string.IsNullOrEmpty(filter.Module))
+			{
+				result = result.Where(s => s.Modules.Any(f => f.Id == filter.Module));
+			}
+
 			if (!string.IsNullOrEmpty(filter.StudyProgramme))
 			{
 				result = result.Where(s => s.StudyProgramme?.Title?.ToUpperInvariant().Contains(filter.StudyProgramme.ToUpperInvariant()) ?? false);

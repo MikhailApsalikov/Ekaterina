@@ -30,6 +30,14 @@
 			</div>
 		</div>
 		<div class="filter form-group">
+			<div class="filter-name">Семестр</div>
+			<div class="filter-value">
+				<select class="form-control" ng-model="filters.Module">
+					<option ng-repeat="module in modules" value="{{module.id}}">{{module.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="filter form-group">
 			<div class="filter-name">Учебный план</div>
 			<div class="filter-value">
 				<input type="text" class="form-control" ng-model="filters.StudyProgramme" />

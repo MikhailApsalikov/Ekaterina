@@ -243,6 +243,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Home\Upload.cshtml" />
+    <None Include="Properties\PublishProfiles\1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -4,6 +4,7 @@
 	{
 		public string Title { get; set; }
 		public string FormsOfControl { get; set; }
+		public string Module { get; set; }
 		public string StudyProgramme { get; set; }
 		public int? HasHourForPract { get; set; }
 		public int? HasHourForLecture { get; set; }
